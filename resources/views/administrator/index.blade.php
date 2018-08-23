@@ -5,10 +5,10 @@
     <h2>Navigation</h2>
     <section>
         <ul>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.menu')}}">Menu</a></li>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.cms')}}">Cms</a></li>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.gallery')}}">Galeria</a></li>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.seo')}}">Seo</a></li>
+            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.menu')}}">Menu</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.cms')}}">Cms</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.gallery')}}">Galeria</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.seo')}}">Seo</a><i class="fas fa-caret-down"></i></li>
         </ul>
     </section>
 </div>

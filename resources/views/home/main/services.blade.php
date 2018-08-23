@@ -1,6 +1,6 @@
 <div id="services" class="content main-content">
-    <h2>{{$cms[2]->name}}</h2>
+    <h2>{{$cms[1]['name']}}</h2>
     <section>
-        {{$cms[2]->html}}
+        {{$cms[1]['name']}}
     </section>
 </div>

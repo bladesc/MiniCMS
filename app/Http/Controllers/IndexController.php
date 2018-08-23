@@ -14,13 +14,21 @@ class IndexController extends Controller
             ->get();
 
         $cms = DB::table('cms')
-            ->select('name', 'html', 'visible')
+            ->select('id', 'name', 'html', 'visible')
             ->where('visible', '=', true)
             ->get();
 
+        $cmsId = [];
+        foreach ($cms as $key=>$value) {
+            $cmsId[$value->id]['id'] = $value->id;
+            $cmsId[$value->id]['name'] = $value->name;
+            $cmsId[$value->id]['html'] = $value->html;
+            $cmsId[$value->id]['visible'] = $value->visible;
+        }
+
         return view('home.index', [
             'menu' => $menu,
-            'cms' => $cms
+            'cms' => $cmsId
         ]);
     }
 }

@@ -1,3 +1,3 @@
 <div id="map">
-    {{$cms[1]->name}}
+    {{$cms[1]['name']}}
 </div>
