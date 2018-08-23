@@ -1,3 +1,3 @@
 <div id="services">
-    usługi
+    {{$cms[2]->name}}
 </div>

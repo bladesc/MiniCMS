@@ -1,18 +1,17 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class DatabaseSeeder extends Seeder
+class CmsSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        for ($i=0;$i<5;$i++) {
+        for ($i=0;$i<10;$i++) {
 
             DB::table('cms')->insert([
                 'name' => 'O nas' . $i,
@@ -20,6 +19,5 @@ class DatabaseSeeder extends Seeder
                 'visible' => true
             ]);
         }
-
     }
 }

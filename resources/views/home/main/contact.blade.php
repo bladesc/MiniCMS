@@ -1,3 +1,3 @@
 <div id="contact">
-   kontakt
+    {{$cms[0]->name}}
 </div>

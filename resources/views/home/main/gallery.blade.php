@@ -1,3 +1,3 @@
 <div id="gallery">
-   gallery
+   {{$cms[0]->name}}
 </div>
