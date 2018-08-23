@@ -24,7 +24,7 @@ Route::get('/administrator/cms', 'IndexCmsAdministratorController@cms')->name('a
 Route::post('/administrator/cms/delete/{id}', 'IndexCmsAdministratorController@delete')->name('admin.cms.delete');
 Route::post('/administrator/cms/modify/{id}', 'IndexCmsAdministratorController@modify')->name('admin.cms.modify');
 Route::put('/administrator/cms/modify/{id}', 'IndexCmsAdministratorController@modifyprove')->name('admin.cms.modify.prove');
-
+Route::delete('/administrator/cms/delete/{id}', 'IndexCmsAdministratorController@deleteprove')->name('admin.cms.delete.prove');
 //administrator->gallery
 Route::get('/administrator/gallery', 'IndexGalleryAdministratorController@gallery')->name('admin.gallery');
 

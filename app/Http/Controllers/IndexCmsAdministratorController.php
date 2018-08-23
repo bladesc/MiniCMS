@@ -20,18 +20,50 @@ class IndexCmsAdministratorController extends Controller
 
     public function Cms()
     {
-        $cms = DB::table('cms')
-            ->select('id', 'name', 'html', 'visible')
-            ->get();
+        try {
+            $cms = DB::table('cms')
+                ->select('id', 'name', 'html', 'visible')
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
 
         return view('administrator.cms.cms', [
             'cms' => $cms
         ]);
     }
 
-    public function Delete()
+    public function Delete(Request $request)
     {
+        $id = $request->input('id');
+        try {
+            $cms = DB::table('cms')
+                ->select('id')
+                ->where('id','=', $id)
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return view('administrator.cms.delete', [
+            'cms' => $cms
+        ]);
 
+    }
+
+    public function DeleteProve(Request $request)
+    {
+        $id = $request->input('id');
+
+        if ($id) {
+            try {
+                DB::table('cms')->where('id', '=', $id)->delete();
+            } catch (\Exception $e)
+            {
+                return $e->getMessage();
+            }
+
+            return redirect(route('admin.cms'))->with('mes', 'good');
+        }
     }
 
     public function ModifyProve(Request $request)
@@ -41,25 +73,33 @@ class IndexCmsAdministratorController extends Controller
         $html = $request->input('html');
         $name = $request->input('name');
 
-        DB::table('cms')
-            ->where('id', $id)
-            ->update([
-                'visible' => $visible,
-                'html' => $html,
-                'name' => $name
-            ]);
-
+        if ($id && $visible && $html && $name) {
+            try {
+                DB::table('cms')
+                    ->where('id', $id)
+                    ->update([
+                        'visible' => $visible,
+                        'html' => $html,
+                        'name' => $name
+                    ]);
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+        }
         return redirect(route('admin.cms'))->with('mes', 'good');
     }
 
     public function Modify(Request $request)
     {
         $id = $request->input('id');
-        $cms = DB::table('cms')
-            ->select('id', 'name', 'html', 'visible')
-            ->where('id','=', $id)
-            ->get();
-
+        try {
+            $cms = DB::table('cms')
+                ->select('id', 'name', 'html', 'visible')
+                ->where('id','=', $id)
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
         return view('administrator.cms.modify', [
             'cms' => $cms
         ]);
