@@ -1,5 +1,11 @@
+body {
+    background: #1d2124;
+    font-family: Ubuntu, Arial;
+    color: #e7e7e7;
+    text-align: center;
+}
 nav {
-    background: #6cb2eb;
+    background: #1b1e21;
 }
 
 nav ul {
@@ -15,8 +21,9 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
+    text-transform: capitalize;
 }
 
 #nav-logo {
@@ -37,4 +44,16 @@ nav ul li a {
 .content {
     width: 70%;
     margin: 0 15%;
+}
+
+.main-content {
+    padding: 100px 0;
+}
+
+header {
+    font-size: 99px;
+    color: #32dc25;
+    height: 300px;
+    width: 100%; text-align: center;
+    line-height: 300px;
 }
