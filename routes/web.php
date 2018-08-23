@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'IndexController@index')->name('index');
-
+Route::get('/administrator', 'IndexAdministratorController@index')->name('admin.index');
 
 Auth::routes();
 
