@@ -1,3 +1,6 @@
-<div id="gallery">
-   {{$cms[0]->name}}
+<div id="gallery"  class="content main-content">
+    <h2>{{$cms[0]->name}}</h2>
+    <section>
+        {{$cms[0]->html}}
+    </section>
 </div>

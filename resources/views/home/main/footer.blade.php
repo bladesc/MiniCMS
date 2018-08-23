@@ -1,3 +1,6 @@
-<footer>
-    {{$cms[2]->name}}
+<footer  class="content main-content">
+    <h2>{{$cms[0]->name}}</h2>
+    <section>
+        {{$cms[0]->html}}
+    </section>
 </footer>
