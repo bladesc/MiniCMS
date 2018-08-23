@@ -1,7 +1,17 @@
-<nav><ul>
+<nav>
+    <div id="nav-logo">
 
-    @foreach($menu as $item)
-        <li><a href="{{$item->url}}">{{$item->name}}</a></li>
-    @endforeach
 
-</ul></nav>
+    logo
+
+
+    </div>
+    <div id="nav-menu">
+        <ul>
+            @foreach($menu as $item)
+                <li><a href="{{$item->url}}">{{$item->name}}</a></li>
+            @endforeach
+        </ul>
+    </div>
+    <div class="foot-box"></div>
+</nav>
