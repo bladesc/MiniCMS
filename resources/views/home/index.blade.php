@@ -1,5 +1,6 @@
 @extends('home.layout.layout')
 
+@include('home.main.menu')
 @include('home.main.header')
 @include('home.main.slider')
 @include('home.main.about')
