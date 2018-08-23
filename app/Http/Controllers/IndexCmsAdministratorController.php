@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class IndexAdministratorController extends Controller
+class IndexCmsAdministratorController extends Controller
 {
 
     public function __construct()
@@ -13,23 +13,21 @@ class IndexAdministratorController extends Controller
         //$this->middleware('auth');
     }
 
-
     public function Index()
     {
         return view('administrator.index');
     }
 
-    public function Menu()
+    public function Cms()
     {
-        $menu = DB::table('menu')
-            ->select('id', 'name', 'url', 'visible')
+        $menu = DB::table('cms')
+            ->select('id', 'name', 'html', 'visible')
             ->get();
 
-        return view('administrator.menu', [
+        return view('administrator.cms', [
             'menu' => $menu
         ]);
     }
-
 
     public function Delete()
     {
@@ -41,5 +39,4 @@ class IndexAdministratorController extends Controller
 
     }
     //
-
 }

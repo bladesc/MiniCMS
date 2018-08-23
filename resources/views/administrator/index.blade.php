@@ -6,7 +6,7 @@
     <section>
         <ul>
             <li><a href="{{route('admin.menu')}}">Menu</a></li>
-            <li><a href="">Cms</a></li>
+            <li><a href="{{route('admin.cms')}}">Cms</a></li>
             <li><a href="">Galeria</a></li>
             <li><a href="">Seo</a></li>
         </ul>
