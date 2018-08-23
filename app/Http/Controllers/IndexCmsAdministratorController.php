@@ -34,6 +34,24 @@ class IndexCmsAdministratorController extends Controller
 
     }
 
+    public function ModifyProve(Request $request)
+    {
+        $id = $request->input('id');
+        $visible = ($request->input('visible') !== null) ? 1 : 0;
+        $html = $request->input('html');
+        $name = $request->input('name');
+
+        DB::table('cms')
+            ->where('id', $id)
+            ->update([
+                'visible' => $visible,
+                'html' => $html,
+                'name' => $name
+            ]);
+
+        return redirect(route('admin.cms'))->with('mes', 'good');
+    }
+
     public function Modify(Request $request)
     {
         $id = $request->input('id');
