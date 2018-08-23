@@ -24,6 +24,11 @@ Route::get('/administrator/cms', 'IndexCmsAdministratorController@cms')->name('a
 Route::delete('/administrator/cms/delete', 'IndexCmsAdministratorController@delete')->name('admin.cms.delete');
 Route::put('/administrator/cms/modify', 'IndexCmsAdministratorController@modify')->name('admin.cms.modify');
 
+//administrator->gallery
+Route::get('/administrator/gallery', 'IndexGalleryAdministratorController@gallery')->name('admin.gallery');
+
+//administrator->seo
+Route::get('/administrator/seo', 'IndexSeoAdministratorController@seo')->name('admin.seo');
 
 Auth::routes();
 

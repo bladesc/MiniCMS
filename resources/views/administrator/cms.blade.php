@@ -1,7 +1,7 @@
 @extends('administrator.index')
 
 @section('content')
-    <h3>Menu</h3>
+    <h3>Cms</h3>
 
     <table>
         <thead>
