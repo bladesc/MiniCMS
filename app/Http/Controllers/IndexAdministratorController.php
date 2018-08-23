@@ -9,9 +9,9 @@ class IndexAdministratorController extends Controller
 {
 
     public function __construct()
-    {
-        //$this->middleware('auth');
-    }
+{
+    //$this->middleware('auth');
+}
 
 
     public function Index()
@@ -25,7 +25,7 @@ class IndexAdministratorController extends Controller
             ->select('id', 'name', 'url', 'visible')
             ->get();
 
-        return view('administrator.menu', [
+        return view('administrator.menu.menu', [
             'menu' => $menu
         ]);
     }

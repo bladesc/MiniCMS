@@ -22,7 +22,7 @@ Route::put('/administrator/menu/modify', 'IndexAdministratorController@modify')-
 //administrator->cms
 Route::get('/administrator/cms', 'IndexCmsAdministratorController@cms')->name('admin.cms');
 Route::delete('/administrator/cms/delete', 'IndexCmsAdministratorController@delete')->name('admin.cms.delete');
-Route::put('/administrator/cms/modify', 'IndexCmsAdministratorController@modify')->name('admin.cms.modify');
+Route::put('/administrator/cms/modify/{id}', 'IndexCmsAdministratorController@modify')->name('admin.cms.modify');
 
 //administrator->gallery
 Route::get('/administrator/gallery', 'IndexGalleryAdministratorController@gallery')->name('admin.gallery');

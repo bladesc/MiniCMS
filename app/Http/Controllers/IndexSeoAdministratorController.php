@@ -15,6 +15,8 @@ class IndexSeoAdministratorController extends Controller
 
     public function Seo()
     {
-
+        return view('administrator.seo.seo', [
+            'seo' => 'seo'
+        ]);
     }
 }

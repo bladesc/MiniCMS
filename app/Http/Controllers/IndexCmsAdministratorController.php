@@ -20,12 +20,12 @@ class IndexCmsAdministratorController extends Controller
 
     public function Cms()
     {
-        $menu = DB::table('cms')
+        $cms = DB::table('cms')
             ->select('id', 'name', 'html', 'visible')
             ->get();
 
-        return view('administrator.cms', [
-            'menu' => $menu
+        return view('administrator.cms.cms', [
+            'cms' => $cms
         ]);
     }
 
@@ -34,9 +34,17 @@ class IndexCmsAdministratorController extends Controller
 
     }
 
-    public function Modify()
+    public function Modify(Request $request)
     {
+        $id = $request->input('id');
+        $cms = DB::table('cms')
+            ->select('id', 'name', 'html', 'visible')
+            ->where('id','=', $id)
+            ->get();
 
+        return view('administrator.cms.modify', [
+            'cms' => $cms
+        ]);
     }
     //
 }

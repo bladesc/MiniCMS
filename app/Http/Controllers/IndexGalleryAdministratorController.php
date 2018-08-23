@@ -14,6 +14,8 @@ class IndexGalleryAdministratorController extends Controller
 
     public function Gallery()
     {
-
+        return view('administrator.gallery.gallery', [
+            'gallery' => 'dd'
+        ]);
     }
 }
