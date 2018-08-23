@@ -1,9 +1,9 @@
 body {
-    background: #1d2124;
+    background: #333333;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
     font-size: 15px;
-    color: #333333;
+    color: #cccccc;
     text-align: left;
 }
 h2 {
@@ -23,6 +23,10 @@ h2 {
 
 #left-bar ul li {
     display: block;
+}
+#right-bar h2 {
+    border-left: 1px solid #333333;
+    box-sizing: border-box;
 }
 
 #left-bar ul li a {
@@ -50,10 +54,43 @@ body,html {
 #left-bar {
     width: 20%;
     float: left;
-    background: #282a2d;
+    background: #242424;
 }
 
 #right-bar {
     float: right;
     width: 80%;
 }
+
+#right-bar section {
+    margin: 40px;
+    background: #292929;
+    box-sizing: border-box;
+}
+
+button {
+    border-radius: 2px;
+    border-color: none;
+    border-width: 0;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    padding: 10px 20px;
+}
+
+th {
+    background: #333333;
+}
+
+table, td, th, td {
+    border: 1px solid #333333;
+}
+
+#right-bar section table,

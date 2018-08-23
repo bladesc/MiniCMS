@@ -13,7 +13,9 @@
 
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/administrator', 'IndexAdministratorController@index')->name('admin.index');
-
+Route::get('/administrator/menu', 'IndexAdministratorController@menu')->name('admin.menu');
+Route::delete('/administrator/menu/delete', 'IndexAdministratorController@delete')->name('admin.menu.delete');
+Route::put('/administrator/menu/modify', 'IndexAdministratorController@modify')->name('admin.menu.modify');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
