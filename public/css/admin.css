@@ -32,8 +32,13 @@ h2 {
 #left-bar ul li a {
     color: #a3a3a3;
     text-decoration: none;
-    padding: 10px 0;
-    display: block;
+    padding: 10px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+#left-bar ul li a i {
+    display: inline-block;
 }
 
 #left-bar ul li a::after {
@@ -93,3 +98,18 @@ table, td, th, td {
     border: 1px solid #333333;
 }
 
+.alert {
+    position: absolute;
+    padding: 15px;
+    top: 20px;
+    right: 20px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.alert-success {
+    background-color: #c8eaa1;
+    border: 1px solid #a6cd79;
+    color: #748065;
+}

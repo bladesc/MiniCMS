@@ -56,13 +56,17 @@ class IndexCmsAdministratorController extends Controller
 
         if ($id) {
             try {
-                DB::table('cms')->where('id', '=', $id)->delete();
+                DB::table('cms')
+                    ->where('id', '=', $id)->delete();
             } catch (\Exception $e)
             {
                 return $e->getMessage();
             }
 
-            return redirect(route('admin.cms'))->with('mes', 'good');
+
+            return redirect(route('admin.cms'))
+                ->with('message', (__('messages.succeedDeleteRecord')));
+
         }
     }
 
@@ -86,7 +90,8 @@ class IndexCmsAdministratorController extends Controller
                 return $e->getMessage();
             }
         }
-        return redirect(route('admin.cms'))->with('mes', 'good');
+        return redirect(route('admin.cms'))
+            ->with('message', (__('messages.succeedUpdatedRecord')));
     }
 
     public function Modify(Request $request)
