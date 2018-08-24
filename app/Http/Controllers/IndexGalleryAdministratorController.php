@@ -13,9 +13,36 @@ class IndexGalleryAdministratorController extends Controller
         //$this->middleware('auth');
     }
 
-    public function Gallery()
+    public function Gallery(Request $request)
     {
+
+        $sort = $request->input('sortByParameter');
+
+        switch ($sort) {
+            case 'nameAsc':
+                $columnName = 'name';
+                $sortType = 'ASC';
+                break;
+            case 'nameDesc':
+                $columnName = 'name';
+                $sortType = 'DESC';
+                break;
+            case 'dateAsc':
+                $columnName = 'created_at';
+                $sortType = 'ASC';
+                break;
+            case 'dateDesc':
+                $columnName = 'created_at';
+                $sortType = 'DESC';
+                break;
+            default:
+                $columnName = 'id';
+                $sortType = 'ASC';
+                break;
+        }
+
         $images = DB::table('gallery')
+            ->orderBy($columnName, $sortType)
             ->paginate(12);
         $categories = DB::table('gallery_categories')
             ->select('id', 'name')
@@ -29,10 +56,18 @@ class IndexGalleryAdministratorController extends Controller
 
     public function Add()
     {
-        return view('administrator.gallery.add');
+        $categories = DB::table('gallery_categories')
+            ->select('id', 'name')
+            ->where('visible', '=', true)->get();
+
+        return view('administrator.gallery.add', [
+            'categories' => $categories
+        ]);
     }
 
     public function AddProve(Request $request) {
+
+        $category = $request->input('sortByCategory');
 
         if ($request->hasFile('fileToUpload')) {
             for ($i=0; $i<count($request->file('fileToUpload')); $i++)
@@ -48,7 +83,7 @@ class IndexGalleryAdministratorController extends Controller
                                 'name' => $image_name,
                                 'url' => $url,
                                 'visible' => true,
-                                'category' => 0,
+                                'category' => $category,
                                 'created_at' => now(),
                                 'updated_at' => now()
                             ]);

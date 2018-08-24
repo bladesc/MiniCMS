@@ -5,7 +5,7 @@
     <a href="{{route('admin.gallery.add.category')}}">Dodaj kategorię</a>
     <section>
         <form method="get" action="{{route('admin.gallery')}}">
-            <select name="sortByParametr">
+            <select name="sortByParameter">
                 <option value="nameAsc">Name ascending</option>
                 <option value="nameDesc">Name descending</option>
                 <option value="dateAsc">Date ascending</option>
