@@ -87,4 +87,40 @@ class IndexMenuAdministratorController extends Controller
         return redirect(route('admin.menu'))
             ->with('message', (__('messages.succeedUpdatedRecord')));
     }
+
+    public function Delete(Request $request)
+    {
+        $id = $request->input('id');
+        try {
+            $menu = DB::table('menu')
+                ->select('id')
+                ->where('id','=', $id)
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return view('administrator.menu.delete', [
+            'menu' => $menu
+        ]);
+
+    }
+
+    public function DeleteProve(Request $request)
+    {
+        $id = $request->input('id');
+
+        if ($id) {
+            try {
+                DB::table('menu')
+                    ->where('id', '=', $id)->delete();
+            } catch (\Exception $e)
+            {
+                return $e->getMessage();
+            }
+
+            return redirect(route('admin.menu'))
+                ->with('message', (__('messages.succeedDeleteRecord')));
+
+        }
+    }
 }
