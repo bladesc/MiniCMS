@@ -1,1 +1,1 @@
-Content menagment system named "MiniCMS" based on Laravel 5.6
+Content management system named "MiniCMS" based on Laravel 5.6
