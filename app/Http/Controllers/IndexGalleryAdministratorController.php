@@ -15,7 +15,7 @@ class IndexGalleryAdministratorController extends Controller
 
     public function Gallery()
     {
-        $images = DB::table('gallery')->paginate(7);
+        $images = DB::table('gallery')->paginate(12);
 
         return view('administrator.gallery.gallery', [
             'images' => $images
@@ -56,6 +56,36 @@ class IndexGalleryAdministratorController extends Controller
 
         return redirect(route('admin.gallery'))
             ->with('message', (__('messages.succeedAddedImages')));;
+    }
+
+    public function addCategory() {
+        return view('administrator.cms.addcategory');
+    }
+
+    public function addCategoryProve(Request $request)
+    {
+        $visible = ($request->input('visible') !== null) ? 1 : 0;
+        $name = $request->input('name');
+
+        if ($visible && $name) {
+            try {
+                DB::table('gallery_categories')
+                    ->insert([
+                        'visible' => $visible,
+                        'name' => $name,
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ]);
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+            $message = __('messages.succeedUpdatedRecord');
+        }
+        else {
+            $message = __('failed');
+        }
+        return redirect(route('admin.gallery'))
+            ->with('message', $message);
     }
 
 

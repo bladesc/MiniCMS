@@ -1,8 +1,8 @@
 @extends('administrator.index')
 
 @section('content')
-    <a href="{{route('admin.gallery.add')}}">Dodaj</a>
-
+    <a href="{{route('admin.gallery.add')}}">Dodaj zdjęcie</a>
+    <a href="{{route('admin.gallery.add.category')}}">Dodaj kategorię</a>
     <section>
         <form method="get" action="{{route('admin.gallery')}}">
             <select name="sortByParametr">

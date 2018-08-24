@@ -36,6 +36,10 @@ Route::delete('/administrator/cms/delete/{id}', 'IndexCmsAdministratorController
 Route::get('/administrator/gallery', 'IndexGalleryAdministratorController@gallery')->name('admin.gallery');
 Route::get('/administrator/gallery/add', 'IndexGalleryAdministratorController@add')->name('admin.gallery.add');
 Route::put('/administrator/gallery', 'IndexGalleryAdministratorController@addProve')->name('admin.gallery.add.prove');
+//administrator->gallery->categories
+Route::get('/administrator/gallery/category/add', 'IndexGalleryAdministratorController@addCategory')->name('admin.gallery.add.category');
+Route::post('/administrator/gallery/category/add', 'IndexGalleryAdministratorController@addCategoryProve')->name('admin.gallery.add.category.prove');
+
 
 //administrator->seo
 Route::get('/administrator/seo', 'IndexSeoAdministratorController@seo')->name('admin.seo');
