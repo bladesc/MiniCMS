@@ -33,7 +33,9 @@ class IndexMenuAdministratorController extends Controller
                     ->insert([
                         'visible' => $visible,
                         'url' => $url,
-                        'name' => $name
+                        'name' => $name,
+                        'created_at' => now(),
+                        'updated_at' => now()
                     ]);
             } catch (\Exception $e) {
                 return $e->getMessage();
@@ -78,7 +80,8 @@ class IndexMenuAdministratorController extends Controller
                     ->update([
                         'visible' => $visible,
                         'url' => $url,
-                        'name' => $name
+                        'name' => $name,
+                        'updated_at' => now()
                     ]);
             } catch (\Exception $e) {
                 return $e->getMessage();

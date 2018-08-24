@@ -111,7 +111,9 @@ class IndexCmsAdministratorController extends Controller
                     ->insert([
                         'visible' => $visible,
                         'html' => $html,
-                        'name' => $name
+                        'name' => $name,
+                        'created_at' => now(),
+                        'updated_at' => now()
                     ]);
             } catch (\Exception $e) {
                 return $e->getMessage();
@@ -155,7 +157,8 @@ class IndexCmsAdministratorController extends Controller
                     ->update([
                         'visible' => $visible,
                         'html' => $html,
-                        'name' => $name
+                        'name' => $name,
+                        'updated_at' => now()
                     ]);
             } catch (\Exception $e) {
                 return $e->getMessage();
