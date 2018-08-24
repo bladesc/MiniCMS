@@ -2,5 +2,6 @@
 return [
     'succeedUpdatedRecord' => 'Record was modified successful.',
     'succeedDeleteRecord' => 'Record was deleted',
-    'failed' => 'Error!.'
+    'failed' => 'Error!.',
+    'succeedAddedImages' => 'Images was updated successful'
 ];

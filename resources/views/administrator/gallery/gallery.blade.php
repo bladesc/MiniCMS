@@ -2,5 +2,10 @@
 
 @section('content')
     <a href="{{route('admin.gallery.add')}}">Dodaj</a>
-    gallery
+
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
 @endsection
