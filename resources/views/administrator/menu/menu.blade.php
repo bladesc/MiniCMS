@@ -2,7 +2,7 @@
 
 @section('content')
    <h3>Menu</h3>
-
+   <a href="{{route('admin.menu.add')}}">Dodaj</a>
     <table>
         <thead>
             <tr>

@@ -90,10 +90,10 @@ class IndexCmsAdministratorController extends Controller
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
-            $message = '<div class="good_message">' . __('messages.succeedUpdatedRecord') . '</div>';
+            $message = __('messages.succeedUpdatedRecord');
         }
         else {
-            $message = '<div class="bad_message">' . __('failed') . '</div>';
+            $message = __('failed');
         }
         return redirect(route('admin.cms'))
             ->with('message', $message);

@@ -16,15 +16,16 @@ Route::get('/administrator', 'IndexAdministratorController@index')->name('admin.
 
 
 //administrator->menu
-Route::get('/administrator/menu', 'IndexAdministratorController@menu')->name('admin.menu');
-Route::post('/administrator/menu/delete{id}', 'IndexAdministratorController@delete')->name('admin.menu.delete');
-Route::put('/administrator/menu/modify{id}', 'IndexAdministratorController@modify')->name('admin.menu.modify');
-
+Route::get('/administrator/menu', 'IndexMenuAdministratorController@menu')->name('admin.menu');
+Route::post('/administrator/menu/delete{id}', 'IndexMenuAdministratorController@delete')->name('admin.menu.delete');
+Route::put('/administrator/menu/modify{id}', 'IndexMenuAdministratorController@modify')->name('admin.menu.modify');
+Route::get('/administrator/menu/add', 'IndexMenuAdministratorController@add')->name('admin.menu.add');
+Route::post('/administrator/menu/add', 'IndexMenuAdministratorController@addprove')->name('admin.menu.add.prove');
 
 //administrator->cms
 Route::get('/administrator/cms', 'IndexCmsAdministratorController@cms')->name('admin.cms');
-Route::get('/administrator/add', 'IndexCmsAdministratorController@add')->name('admin.cms.add');
-Route::post('/administrator/add', 'IndexCmsAdministratorController@addprove')->name('admin.cms.add.prove');
+Route::get('/administrator/cms/add', 'IndexCmsAdministratorController@add')->name('admin.cms.add');
+Route::post('/administrator/cms/add', 'IndexCmsAdministratorController@addprove')->name('admin.cms.add.prove');
 Route::post('/administrator/cms/delete/{id}', 'IndexCmsAdministratorController@delete')->name('admin.cms.delete');
 Route::post('/administrator/cms/modify/{id}', 'IndexCmsAdministratorController@modify')->name('admin.cms.modify');
 Route::put('/administrator/cms/modify/{id}', 'IndexCmsAdministratorController@modifyprove')->name('admin.cms.modify.prove');
