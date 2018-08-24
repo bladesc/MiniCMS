@@ -9,8 +9,34 @@ class IndexMenuAdministratorController extends Controller
 {
     public function Menu(Request $request)
     {
+        $sort = $request->input('sort');
+
+        switch ($sort) {
+            case 'nameAsc':
+                $columnName = 'name';
+                $sortType = 'ASC';
+                break;
+            case 'nameDesc':
+                $columnName = 'name';
+                $sortType = 'DESC';
+                break;
+            case 'dateAsc':
+                $columnName = 'created_at';
+                $sortType = 'ASC';
+                break;
+            case 'dateDesc':
+                $columnName = 'created_at';
+                $sortType = 'DESC';
+                break;
+            default:
+                $columnName = 'id';
+                $sortType = 'ASC';
+                break;
+        }
+
         $menu = DB::table('menu')
             ->select('id', 'name', 'url', 'visible')
+            ->orderBy($columnName, $sortType)
             ->get();
 
         return view('administrator.menu.menu', [

@@ -25,7 +25,6 @@ Route::delete('/administrator/menu/delete/{id}', 'IndexMenuAdministratorControll
 
 //administrator->cms
 Route::get('/administrator/cms', 'IndexCmsAdministratorController@cms')->name('admin.cms');
-Route::post('/administrator/cms', 'IndexCmsAdministratorController@cmss')->name('admin.cms.sort');
 Route::get('/administrator/cms/add', 'IndexCmsAdministratorController@add')->name('admin.cms.add');
 Route::post('/administrator/cms/add', 'IndexCmsAdministratorController@addprove')->name('admin.cms.add.prove');
 Route::post('/administrator/cms/delete/{id}', 'IndexCmsAdministratorController@delete')->name('admin.cms.delete');

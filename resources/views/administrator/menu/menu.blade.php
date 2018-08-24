@@ -3,6 +3,20 @@
 @section('content')
    <h3>Menu</h3>
    <a href="{{route('admin.menu.add')}}">Dodaj</a>
+
+   <section>
+       <form method="get" action="{{route('admin.menu')}}">
+           <select name="sort">
+               <option value="nameAsc">Name ascending</option>
+               <option value="nameDesc">Name descending</option>
+               <option value="dateAsc">Date ascending</option>
+               <option value="dateDesc">Date descending</option>
+           </select>
+
+           <button>Sortuj</button>
+       </form>
+   </section>
+
     <table>
         <thead>
             <tr>
