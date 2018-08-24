@@ -113,3 +113,27 @@ table, td, th, td {
     border: 1px solid #a6cd79;
     color: #748065;
 }
+
+#gallery {
+    width: 100%;
+}
+
+#gallery .images {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 25%;
+    float: left;
+    height: 300px;
+    overflow: hidden;
+}
+
+#gallery .images img {
+    width: 100%;
+}
+
+.foot-box {
+    clear: both;
+    width: 100%;
+    height: 0;
+    font-size: 0;
+}

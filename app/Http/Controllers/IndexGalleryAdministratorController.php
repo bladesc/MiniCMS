@@ -15,8 +15,10 @@ class IndexGalleryAdministratorController extends Controller
 
     public function Gallery()
     {
+        $images = DB::table('gallery')->paginate(7);
+
         return view('administrator.gallery.gallery', [
-            'gallery' => 'dd'
+            'images' => $images
         ]);
     }
 
