@@ -17,6 +17,7 @@ class IndexGalleryAdministratorController extends Controller
     {
 
         $sort = $request->input('sortByParameter');
+        $category = $request->input('sortByCategory');
 
         switch ($sort) {
             case 'nameAsc':
@@ -41,12 +42,17 @@ class IndexGalleryAdministratorController extends Controller
                 break;
         }
 
-        $images = DB::table('gallery')
-            ->orderBy($columnName, $sortType)
-            ->paginate(12);
+        $query = DB::table('gallery');
+        $query->orderBy($columnName, $sortType);
+        if (isset($category)) {
+            $query->where('category', '=' , $category);
+        };
+        $images = $query->paginate(12);
+
         $categories = DB::table('gallery_categories')
             ->select('id', 'name')
-            ->where('visible', '=', true)->get();
+            ->where('visible', '=', true)
+            ->get();
 
         return view('administrator.gallery.gallery', [
             'images' => $images,
