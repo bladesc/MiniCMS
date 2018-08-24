@@ -99,6 +99,21 @@ class IndexCmsAdministratorController extends Controller
             ->with('message', $message);
     }
 
+    public function Modify(Request $request)
+    {
+        $id = $request->input('id');
+        try {
+            $cms = DB::table('cms')
+                ->select('id', 'name', 'html', 'visible')
+                ->where('id','=', $id)
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return view('administrator.cms.modify', [
+            'cms' => $cms
+        ]);
+    }
 
     public function ModifyProve(Request $request)
     {
@@ -123,21 +138,4 @@ class IndexCmsAdministratorController extends Controller
         return redirect(route('admin.cms'))
             ->with('message', (__('messages.succeedUpdatedRecord')));
     }
-
-    public function Modify(Request $request)
-    {
-        $id = $request->input('id');
-        try {
-            $cms = DB::table('cms')
-                ->select('id', 'name', 'html', 'visible')
-                ->where('id','=', $id)
-                ->get();
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-        return view('administrator.cms.modify', [
-            'cms' => $cms
-        ]);
-    }
-    //
 }

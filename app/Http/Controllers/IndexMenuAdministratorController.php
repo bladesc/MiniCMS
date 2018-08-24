@@ -46,4 +46,45 @@ class IndexMenuAdministratorController extends Controller
         return redirect(route('admin.menu'))
             ->with('message', $message);
     }
+
+    public function Modify(Request $request)
+    {
+        $id = $request->input('id');
+        try {
+            $menu = DB::table('menu')
+                ->select('id', 'name', 'url', 'visible')
+                ->where('id','=', $id)
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return view('administrator.menu.modify', [
+            'menu' => $menu
+        ]);
+    }
+
+    public function ModifyProve(Request $request)
+    {
+        $id = $request->input('id');
+        $visible = ($request->input('visible') !== null) ? 1 : 0;
+        $url = $request->input('url');
+        $name = $request->input('name');
+
+        if ($id && $visible && $url && $name) {
+            try {
+                DB::table('menu')
+                    ->where('id', $id)
+                    ->update([
+                        'visible' => $visible,
+                        'url' => $url,
+                        'name' => $name
+                    ]);
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+        }
+        return redirect(route('admin.menu'))
+            ->with('message', (__('messages.succeedUpdatedRecord')));
+    }
 }

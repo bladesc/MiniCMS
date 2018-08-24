@@ -23,16 +23,14 @@
                 <td>{{$item->visible}}</td>
                 <td>
                     <form method="POST" action="{{route('admin.menu.modify', $item->id)}}">
-                        <input type="hidden" readonly value="{{$item->id}}">
-                        <input type="hidden" name="_method" value="PUT">
+                        <input type="hidden" name="id" readonly value="{{$item->id}}">
                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                         <button>modify</button>
                     </form>
                 </td>
                 <td>
                     <form method="POST" action="{{route('admin.menu.delete', $item->id)}}">
-                        <input type="hidden" readonly value="{{$item->id}}">
-                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="id" readonly value="{{$item->id}}">
                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                         <button>delete</button>
                     </form>
