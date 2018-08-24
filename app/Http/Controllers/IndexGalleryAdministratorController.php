@@ -35,17 +35,17 @@ class IndexGalleryAdministratorController extends Controller
 
                 $image_name = ($request->file('fileToUpload')[$i]->getClientOriginalName());
 
-                if($url) {
+                /*if($url) {
                     if(DB::table('images')->insert(
                         ['name' => $image_name, 'url' => $url]
                     )) {
 
                     }
-                }
+                }*/
             }
         }
 
-        return redirect(route('gallery'))->with($message, $communicate);
+        return redirect(route('admin.gallery'));
     }
 
 

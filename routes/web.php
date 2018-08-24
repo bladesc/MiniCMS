@@ -35,7 +35,7 @@ Route::delete('/administrator/cms/delete/{id}', 'IndexCmsAdministratorController
 //administrator->gallery
 Route::get('/administrator/gallery', 'IndexGalleryAdministratorController@gallery')->name('admin.gallery');
 Route::get('/administrator/gallery/add', 'IndexGalleryAdministratorController@add')->name('admin.gallery.add');
-Route::put('/administrator/gallery/add', 'IndexGalleryAdministratorController@add')->name('admin.gallery.add.prove');
+Route::put('/administrator/gallery', 'IndexGalleryAdministratorController@addProve')->name('admin.gallery.add.prove');
 
 //administrator->seo
 Route::get('/administrator/seo', 'IndexSeoAdministratorController@seo')->name('admin.seo');
