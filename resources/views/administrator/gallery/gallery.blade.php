@@ -3,6 +3,27 @@
 @section('content')
     <a href="{{route('admin.gallery.add')}}">Dodaj</a>
 
+    <section>
+        <form method="get" action="{{route('admin.gallery')}}">
+            <select name="sortByParametr">
+                <option value="nameAsc">Name ascending</option>
+                <option value="nameDesc">Name descending</option>
+                <option value="dateAsc">Date ascending</option>
+                <option value="dateDesc">Date descending</option>
+            </select>
+
+            <select name="sortByCategory">
+                <option value="nameAsc">Name ascending</option>
+                <option value="nameDesc">Name descending</option>
+                <option value="dateAsc">Date ascending</option>
+                <option value="dateDesc">Date descending</option>
+            </select>
+
+            <button>Sortuj</button>
+        </form>
+    </section>
+
+
     <div id="gallery">
         @foreach($images as $image)
             <div class="images">
