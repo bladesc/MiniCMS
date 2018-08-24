@@ -15,10 +15,15 @@ class IndexGalleryAdministratorController extends Controller
 
     public function Gallery()
     {
-        $images = DB::table('gallery')->paginate(12);
+        $images = DB::table('gallery')
+            ->paginate(12);
+        $categories = DB::table('gallery_categories')
+            ->select('id', 'name')
+            ->where('visible', '=', true)->get();
 
         return view('administrator.gallery.gallery', [
-            'images' => $images
+            'images' => $images,
+            'categories' => $categories
         ]);
     }
 

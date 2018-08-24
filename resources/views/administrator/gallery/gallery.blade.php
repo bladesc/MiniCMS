@@ -13,10 +13,9 @@
             </select>
 
             <select name="sortByCategory">
-                <option value="nameAsc">Name ascending</option>
-                <option value="nameDesc">Name descending</option>
-                <option value="dateAsc">Date ascending</option>
-                <option value="dateDesc">Date descending</option>
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
             </select>
 
             <button>Sortuj</button>
