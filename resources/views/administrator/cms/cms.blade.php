@@ -2,7 +2,20 @@
 
 @section('content')
     <h3>Cms</h3>
-    <a href="{{route('admin.cms.add')}}">Dodaj</a>
+    <a href="{{route('admin.cms.add')}}">Add</a>
+
+    <section>
+        <form method="get" action="{{route('admin.cms')}}">
+            <select name="sort">
+                <option value="nameAsc">Name ascending</option>
+                <option value="nameDesc">Name descending</option>
+                <option value="dateAsc">Date ascending</option>
+                <option value="dateDesc">Date descending</option>
+            </select>
+
+            <button>Sortuj</button>
+        </form>
+    </section>
 
     <table>
         <thead>

@@ -18,11 +18,37 @@ class IndexCmsAdministratorController extends Controller
         return view('administrator.index');
     }
 
-    public function Cms()
+    public function Cms(Request $request)
     {
+        $sort = $request->input('sort');
+
+        switch ($sort) {
+            case 'nameAsc':
+                $columnName = 'name';
+                $sortType = 'ASC';
+                break;
+            case 'nameDesc':
+                $columnName = 'name';
+                $sortType = 'DESC';
+                break;
+            case 'dateAsc':
+                $columnName = 'created_at';
+                $sortType = 'ASC';
+                break;
+            case 'dateDesc':
+                $columnName = 'created_at';
+                $sortType = 'DESC';
+                break;
+            default:
+                $columnName = 'id';
+                $sortType = 'ASC';
+                break;
+        }
+
         try {
             $cms = DB::table('cms')
                 ->select('id', 'name', 'html', 'visible')
+                ->orderBy($columnName, $sortType)
                 ->get();
         } catch (\Exception $e) {
             return $e->getMessage();

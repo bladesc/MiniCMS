@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class IndexMenuAdministratorController extends Controller
 {
-    public function Menu()
+    public function Menu(Request $request)
     {
         $menu = DB::table('menu')
             ->select('id', 'name', 'url', 'visible')
