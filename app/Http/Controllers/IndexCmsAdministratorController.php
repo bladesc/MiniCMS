@@ -70,6 +70,36 @@ class IndexCmsAdministratorController extends Controller
         }
     }
 
+    public function Add() {
+        return view('administrator.cms.add');
+    }
+
+    public function AddProve(Request $request) {
+        $visible = ($request->input('visible') !== null) ? 1 : 0;
+        $html = $request->input('html');
+        $name = $request->input('name');
+
+        if ($visible && $html && $name) {
+            try {
+                DB::table('cms')
+                    ->insert([
+                        'visible' => $visible,
+                        'html' => $html,
+                        'name' => $name
+                    ]);
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+            $message = '<div class="good_message">' . __('messages.succeedUpdatedRecord') . '</div>';
+        }
+        else {
+            $message = '<div class="bad_message">' . __('failed') . '</div>';
+        }
+        return redirect(route('admin.cms'))
+            ->with('message', $message);
+    }
+
+
     public function ModifyProve(Request $request)
     {
         $id = $request->input('id');

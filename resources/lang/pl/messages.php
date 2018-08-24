@@ -2,5 +2,5 @@
 return [
     'succeedUpdatedRecord' => 'Rekord został zmieniony pomyślnie.',
     'succeedDeleteRecord' => 'Rekord został usunięty pomyślnie',
-    'failed' => 'Wystąpił błąd.'
+    'failed' => 'Error!'
 ];

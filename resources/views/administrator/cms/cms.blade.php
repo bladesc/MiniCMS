@@ -2,6 +2,7 @@
 
 @section('content')
     <h3>Cms</h3>
+    <a href="{{route('admin.cms.add')}}">Dodaj</a>
 
     <table>
         <thead>
