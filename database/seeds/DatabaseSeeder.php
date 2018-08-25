@@ -12,12 +12,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0;$i<5;$i++) {
+        for ($i=0;$i<10;$i++) {
 
-            DB::table('cms')->insert([
-                'name' => 'O nas' . $i,
-                'html' => 'html' . $i,
-                'visible' => true
+            DB::table('users')->insert([
+                'name' => 'admin' . $i,
+                'email' => 'admin' . $i . '@wp.pl',
+                'password' => bcrypt('admin')
             ]);
         }
 

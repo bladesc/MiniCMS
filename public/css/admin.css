@@ -7,12 +7,22 @@ body {
     text-align: left;
 }
 h2 {
-    margin: 0;
-    padding: 20px 20px;
+
     font-size: 28px;
     font-weight: 700;
     color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.head-bar {
+    margin: 0;
+    padding: 20px 20px;
     background: #1b1b1b;
+}
+
+.head-bar div {
+    display: inline-block;
 }
 
 #left-bar ul {
