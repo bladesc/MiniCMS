@@ -5,17 +5,19 @@
     <a href="{{route('admin.gallery.add.category')}}">Dodaj kategorię</a>
     <section>
         <form method="get" action="{{route('admin.gallery')}}">
+
+
             <select name="sortByParameter">
-                <option value="nameAsc" @if($_GET['sortByParameter'] === 'nameAsc') selected @endif>Name ascending</option>
-                <option value="nameDesc" @if($_GET['sortByParameter'] === 'nameDesc') selected @endif>Name descending</option>
-                <option value="dateAsc" @if($_GET['sortByParameter'] === 'dateAsc') selected @endif>Date ascending</option>
-                <option value="dateDesc" @if($_GET['sortByParameter'] === 'dateDesc') selected @endif>Date descending</option>
+                @foreach($parameters as $value => $name)
+                    <option value="{{$value}}" {{$name[1]}}>{{$name[0]}}</option>
+                @endforeach
             </select>
+
 
             <select name="sortByCategory">
                 <option>All</option>
                 @foreach($categories as $category)
-                    <option value="{{$category->id}}" @if($_GET['sortByCategory'] == $category->id) selected @endif>{{$category->name}}</option>
+                    <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
             </select>
 

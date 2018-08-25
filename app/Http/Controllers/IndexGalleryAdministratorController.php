@@ -54,9 +54,25 @@ class IndexGalleryAdministratorController extends Controller
             ->where('visible', '=', true)
             ->get();
 
+        $parameters = [
+            'nameAsc' => ['Name ascending'],
+            'nameDesc' => ['Name descending'],
+            'dateAsc' => ['Date ascending'],
+            'dateDesc' => ['Date ascending']
+        ];
+
+        foreach ($parameters as $key=>$value) {
+            if ($key == $sort) {
+                $parameters[$key][] = 'selected';
+            } else {
+                $parameters[$key][] = '';
+            }
+        }
+
         return view('administrator.gallery.gallery', [
             'images' => $images,
-            'categories' => $categories
+            'categories' => $categories,
+            'parameters' => $parameters
         ]);
     }
 
