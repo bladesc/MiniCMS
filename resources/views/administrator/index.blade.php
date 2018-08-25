@@ -12,8 +12,10 @@
         </ul>
     </section>
 </div>
+
 <div id="right-bar">
     <h2>Dashboard</h2>
+    @include('administrator.breadcrumbs')
     <section>
     @yield('content')
     </section>
