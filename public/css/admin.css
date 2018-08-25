@@ -19,10 +19,22 @@ h2 {
     margin: 0;
     padding: 20px 20px;
     background: #1b1b1b;
+    border-left: 1px solid #333333;
+    box-sizing: border-box;
 }
 
-.head-bar div {
+.head-bar a {
+    color: #ffffff;
     display: inline-block;
+    padding: 5px 10px;
+}
+
+.head-bar div:nth-child(1) {
+    float: left;
+}
+
+.head-bar div:nth-child(2) {
+    float: right;
 }
 
 #left-bar ul {
@@ -34,10 +46,7 @@ h2 {
 #left-bar ul li {
     display: block;
 }
-#right-bar h2 {
-    border-left: 1px solid #333333;
-    box-sizing: border-box;
-}
+
 
 #left-bar ul li a {
     color: #a3a3a3;

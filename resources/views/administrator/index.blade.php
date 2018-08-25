@@ -38,6 +38,7 @@
                 </form>
             @endguest
         </div>
+        <div class="foot-box"></div>
     </div>
 
     @include('administrator.breadcrumbs')
