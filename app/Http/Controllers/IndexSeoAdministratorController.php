@@ -13,11 +13,6 @@ class IndexSeoAdministratorController extends Controller
         $this->middleware('auth');
     }
 
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
-
     public function Seo()
     {
         return view('administrator.seo.seo', [
