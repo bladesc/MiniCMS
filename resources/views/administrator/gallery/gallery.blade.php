@@ -8,16 +8,16 @@
 
 
             <select name="sortByParameter">
-                @foreach($parameters as $value => $name)
-                    <option value="{{$value}}" {{$name[1]}}>{{$name[0]}}</option>
+                @foreach($parameters as $key => $value)
+                    <option value="{{$key}}" {{$value[1]}}>{{$value[0]}}</option>
                 @endforeach
             </select>
 
 
             <select name="sortByCategory">
                 <option>All</option>
-                @foreach($categories as $category)
-                    <option value="{{$category->id}}">{{$category->name}}</option>
+                @foreach($categories as $key )
+                    <option value="{{$key['id']}}" {{$key['selected']}}>{{$key['name']}}</option>
                 @endforeach
             </select>
 

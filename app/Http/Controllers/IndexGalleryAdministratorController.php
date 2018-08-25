@@ -69,9 +69,19 @@ class IndexGalleryAdministratorController extends Controller
             }
         }
 
+        $categoriesArray=[];
+        foreach ($categories as $key=>$value) {
+            if ($value->id == $category) {
+                $tempCategory = 'selected';
+            } else {
+                $tempCategory = '';
+            }
+            $categoriesArray[] = ['id' => $value->id, 'name' => $value->name, 'selected' => $tempCategory];
+        }
+
         return view('administrator.gallery.gallery', [
             'images' => $images,
-            'categories' => $categories,
+            'categories' => $categoriesArray,
             'parameters' => $parameters
         ]);
     }
