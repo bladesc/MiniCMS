@@ -6,15 +6,16 @@
     <section>
         <form method="get" action="{{route('admin.gallery')}}">
             <select name="sortByParameter">
-                <option value="nameAsc">Name ascending</option>
-                <option value="nameDesc">Name descending</option>
-                <option value="dateAsc">Date ascending</option>
-                <option value="dateDesc">Date descending</option>
+                <option value="nameAsc" @if($_GET['sortByParameter'] === 'nameAsc') selected @endif>Name ascending</option>
+                <option value="nameDesc" @if($_GET['sortByParameter'] === 'nameDesc') selected @endif>Name descending</option>
+                <option value="dateAsc" @if($_GET['sortByParameter'] === 'dateAsc') selected @endif>Date ascending</option>
+                <option value="dateDesc" @if($_GET['sortByParameter'] === 'dateDesc') selected @endif>Date descending</option>
             </select>
 
             <select name="sortByCategory">
+                <option>All</option>
                 @foreach($categories as $category)
-                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    <option value="{{$category->id}}" @if($_GET['sortByCategory'] == $category->id) selected @endif>{{$category->name}}</option>
                 @endforeach
             </select>
 

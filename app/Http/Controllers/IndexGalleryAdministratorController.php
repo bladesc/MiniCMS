@@ -37,7 +37,7 @@ class IndexGalleryAdministratorController extends Controller
                 $sortType = 'DESC';
                 break;
             default:
-                $columnName = 'id';
+                $columnName = 'created_at';
                 $sortType = 'ASC';
                 break;
         }
