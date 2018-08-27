@@ -42,12 +42,23 @@ class IndexGalleryAdministratorController extends Controller
                 break;
         }
 
+
+
         $query = DB::table('gallery');
         $query->orderBy($columnName, $sortType);
         if (isset($category)) {
             $query->where('category', '=' , $category);
         };
         $images = $query->paginate(12);
+        if (isset($sort)) {
+            $images->appends('sortByParameter', $sort);
+        };
+        if (isset($category)) {
+            $images->appends('sortByCategory', $category);
+        };
+
+
+
 
         $categories = DB::table('gallery_categories')
             ->select('id', 'name')
@@ -86,18 +97,18 @@ class IndexGalleryAdministratorController extends Controller
         ]);
     }
 
-    public function Add()
+    public function AddImage()
     {
         $categories = DB::table('gallery_categories')
             ->select('id', 'name')
             ->where('visible', '=', true)->get();
 
-        return view('administrator.gallery.add', [
+        return view('administrator.gallery.add-image', [
             'categories' => $categories
         ]);
     }
 
-    public function AddProve(Request $request) {
+    public function AddImageProve(Request $request) {
 
         $category = $request->input('sortByCategory');
 
@@ -131,7 +142,7 @@ class IndexGalleryAdministratorController extends Controller
     }
 
     public function addCategory() {
-        return view('administrator.cms.addcategory');
+        return view('administrator.gallery.add-category');
     }
 
     public function addCategoryProve(Request $request)

@@ -17,14 +17,20 @@ Route::get('/administrator', 'IndexAdministratorController@index')->name('admin.
 
 
 Auth::routes();
+
     //administrator->menu
     Route::get('/administrator/menu', 'IndexMenuAdministratorController@menu')->name('admin.menu');
-    Route::get('/administrator/menu/add', 'IndexMenuAdministratorController@add')->name('admin.menu.add');
-    Route::post('/administrator/menu/add', 'IndexMenuAdministratorController@addprove')->name('admin.menu.add.prove');
-    Route::post('/administrator/menu/delete/{id}', 'IndexMenuAdministratorController@delete')->name('admin.menu.delete');
-    Route::post('/administrator/menu/modify/{id}', 'IndexMenuAdministratorController@modify')->name('admin.menu.modify');
-    Route::put('/administrator/menu/modify/{id}', 'IndexMenuAdministratorController@modifyprove')->name('admin.menu.modify.prove');
-    Route::delete('/administrator/menu/delete/{id}', 'IndexMenuAdministratorController@deleteprove')->name('admin.menu.delete.prove');
+    Route::get('/administrator/menu/add', 'IndexMenuAdministratorController@add')
+        ->name('admin.menu.add');
+    Route::post('/administrator/menu/add', 'IndexMenuAdministratorController@addprove')
+        ->name('admin.menu.add.prove');
+    Route::post('/administrator/menu/delete/{id}', 'IndexMenuAdministratorController@delete')
+        ->name('admin.menu.delete');
+    Route::post('/administrator/menu/modify/{id}', 'IndexMenuAdministratorController@modify')
+        ->name('admin.menu.modify');
+    Route::put('/administrator/menu/modify/{id}', 'IndexMenuAdministratorController@modifyprove')
+        ->name('admin.menu.modify.prove');
+    Route::delete('/administrator/menu/delete/{id}', 'IndexMenuAdministratorController@deleteprove');
 
     //administrator->cms
     Route::get('/administrator/cms', 'IndexCmsAdministratorController@cms')->name('admin.cms');
@@ -37,11 +43,11 @@ Auth::routes();
 
     //administrator->gallery
     Route::get('/administrator/gallery', 'IndexGalleryAdministratorController@gallery')->name('admin.gallery');
-    Route::get('/administrator/gallery/add', 'IndexGalleryAdministratorController@add')->name('admin.gallery.add');
-    Route::put('/administrator/gallery', 'IndexGalleryAdministratorController@addProve')->name('admin.gallery.add.prove');
+    Route::get('/administrator/gallery/add-image', 'IndexGalleryAdministratorController@addImage')->name('admin.gallery.add');
+    Route::put('/administrator/gallery/add-image', 'IndexGalleryAdministratorController@addImageProve')->name('admin.gallery.add.prove');
     //administrator->gallery->categories
-    Route::get('/administrator/gallery/category/add', 'IndexGalleryAdministratorController@addCategory')->name('admin.gallery.add.category');
-    Route::post('/administrator/gallery/category/add', 'IndexGalleryAdministratorController@addCategoryProve')->name('admin.gallery.add.category.prove');
+    Route::get('/administrator/gallery/add-category', 'IndexGalleryAdministratorController@addCategory')->name('admin.gallery.add.category');
+    Route::post('/administrator/gallery/add-category', 'IndexGalleryAdministratorController@addCategoryProve')->name('admin.gallery.add.category.prove');
 
 
     //administrator->seo

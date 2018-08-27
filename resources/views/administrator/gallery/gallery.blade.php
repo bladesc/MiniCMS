@@ -1,6 +1,7 @@
 @extends('administrator.index')
 
 @section('content')
+    {{print_r($_GET)}}
     <a href="{{route('admin.gallery.add')}}">Dodaj zdjęcie</a>
     <a href="{{route('admin.gallery.add.category')}}">Dodaj kategorię</a>
     <section>
