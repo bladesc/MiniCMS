@@ -16,7 +16,8 @@ class AddKeys extends Migration
         Schema::table('account_information', function (Blueprint $table) {
             $table->foreign('id_users')
                 ->references('id')->on('users')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
