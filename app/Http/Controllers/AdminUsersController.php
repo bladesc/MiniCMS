@@ -11,7 +11,9 @@ class AdminUsersController extends Controller
     {
 
 
-        $users = DB::table('users')->get();
+        $users = DB::table('users')
+            ->leftJoin('account_information', 'users.id', '=', 'account.users_id')
+            ->get();
 
         return view('administrator.account.users',
             [

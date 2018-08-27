@@ -15,7 +15,7 @@ class UsersInfo extends Migration
     {
         Schema::create('account_information', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_users');
+            $table->unsignedInteger('id_users',10);
             $table->char('name', 255);
             $table->char('surname', 255);
             $table->char('address', 255);
