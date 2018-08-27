@@ -1,5 +1,5 @@
 @extends('administrator.index')
 
 @section('content')
-    {{Auth::id()}}
+    {{print_r($account)}}
 @endsection

@@ -16,7 +16,7 @@ class AdminUsersController extends Controller
             ->leftJoin('account_information', 'users.id', '=', 'account_information.id_users')
             ->paginate(12);
 
-        return view('administrator.account.users',
+        return view('administrator.users.users',
             [
                 'users' => $users
             ]);
