@@ -10,7 +10,7 @@ class IndexMenuAdministratorController extends Controller
 
     public function Menu(Request $request)
     {
-        $sort = $request->input('sort');
+        $sort = $request->input('sortByParameter');
 
         switch ($sort) {
             case 'nameAsc':
@@ -35,10 +35,21 @@ class IndexMenuAdministratorController extends Controller
                 break;
         }
 
-        $menu = DB::table('menu')
-            ->select('id', 'name', 'url', 'visible')
-            ->orderBy($columnName, $sortType)
-            ->get();
+        try {
+            $query = DB::table('menu');
+            $query->select('id', 'name', 'url', 'visible');
+            $query->orderBy($columnName, $sortType);
+            if (isset($category)) {
+                $query->where('category', '=' , $category);
+            };
+            $menu = $query->paginate(12);
+            if (isset($sort)) {
+                $menu->appends('sortByParameter', $sort);
+            };
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
 
         return view('administrator.menu.menu', [
             'menu' => $menu

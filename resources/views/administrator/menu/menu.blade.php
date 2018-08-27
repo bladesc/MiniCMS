@@ -6,7 +6,7 @@
 
    <section>
        <form method="get" action="{{route('admin.menu')}}">
-           <select name="sort">
+           <select name="sortByParameter">
                <option value="nameAsc">Name ascending</option>
                <option value="nameDesc">Name descending</option>
                <option value="dateAsc">Date ascending</option>
