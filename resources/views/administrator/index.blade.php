@@ -9,6 +9,8 @@
             <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.cms')}}">Cms</a><i class="fas fa-caret-down"></i></li>
             <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.gallery')}}">Galeria</a><i class="fas fa-caret-down"></i></li>
             <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.seo')}}">Seo</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.users')}}">Users</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.account')}}">My account</a><i class="fas fa-caret-down"></i></li>
         </ul>
     </section>
 </div>

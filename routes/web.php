@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/administrator/gallery', 'IndexGalleryAdministratorController@gallery')->name('admin.gallery');
     Route::get('/administrator/gallery/add-image', 'IndexGalleryAdministratorController@addImage')->name('admin.gallery.add');
     Route::put('/administrator/gallery/add-image', 'IndexGalleryAdministratorController@addImageProve')->name('admin.gallery.add.prove');
+
     //administrator->gallery->categories
     Route::get('/administrator/gallery/add-category', 'IndexGalleryAdministratorController@addCategory')->name('admin.gallery.add.category');
     Route::post('/administrator/gallery/add-category', 'IndexGalleryAdministratorController@addCategoryProve')->name('admin.gallery.add.category.prove');
@@ -57,6 +58,11 @@ Route::group(['middleware' => ['auth']], function() {
     //administrator->seo
     Route::get('/administrator/seo', 'IndexSeoAdministratorController@seo')->name('admin.seo');
 
+    //administrator->users
+    Route::get('/administrator/users', 'AdminUsersController@index')->name('admin.users');
+
+    //administrator->account
+    Route::get('/administrator/account', 'AdminAccountController@index')->name('admin.account');
 });
 
     Route::get('/home', 'HomeController@index')->name('home');
