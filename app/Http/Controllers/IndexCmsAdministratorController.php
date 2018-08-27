@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\DB;
 class IndexCmsAdministratorController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function Index()
     {
         return view('administrator.index');

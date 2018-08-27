@@ -12,11 +12,11 @@
 */
 
 
-Route::get('/', 'IndexController@index')->name('index');
-Route::get('/administrator', 'IndexAdministratorController@index')->name('admin.index');
-
 
 Auth::routes();
+
+Route::group(['middleware' => ['web']], function() {
+    Route::get('/', 'IndexController@index')->name('index');
 
     //administrator->menu
     Route::get('/administrator/menu', 'IndexMenuAdministratorController@menu')->name('admin.menu');
@@ -31,6 +31,10 @@ Auth::routes();
     Route::put('/administrator/menu/modify/{id}', 'IndexMenuAdministratorController@modifyprove')
         ->name('admin.menu.modify.prove');
     Route::delete('/administrator/menu/delete/{id}', 'IndexMenuAdministratorController@deleteprove');
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/administrator', 'IndexAdministratorController@index')->name('admin.index');
 
     //administrator->cms
     Route::get('/administrator/cms', 'IndexCmsAdministratorController@cms')->name('admin.cms');
@@ -53,7 +57,7 @@ Auth::routes();
     //administrator->seo
     Route::get('/administrator/seo', 'IndexSeoAdministratorController@seo')->name('admin.seo');
 
-
+});
 
     Route::get('/home', 'HomeController@index')->name('home');
     // Only authenticated users may enter...
