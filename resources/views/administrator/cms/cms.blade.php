@@ -6,7 +6,7 @@
 
     <section>
         <form method="get" action="{{route('admin.cms')}}">
-            <select name="sort">
+            <select name="sortByParameter">
                 <option value="nameAsc">Name ascending</option>
                 <option value="nameDesc">Name descending</option>
                 <option value="dateAsc">Date ascending</option>
@@ -53,4 +53,6 @@
         @endforeach
         </tbody>
     </table>
+
+    <?php echo $cms->links(); ?>
 @endsection

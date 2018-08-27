@@ -39,21 +39,22 @@ class IndexGalleryAdministratorController extends Controller
         }
 
 
-
-        $query = DB::table('gallery');
-        $query->orderBy($columnName, $sortType);
-        if (isset($category)) {
-            $query->where('category', '=' , $category);
-        };
-        $images = $query->paginate(12);
-        if (isset($sort)) {
-            $images->appends('sortByParameter', $sort);
-        };
-        if (isset($category)) {
-            $images->appends('sortByCategory', $category);
-        };
-
-
+        try {
+            $query = DB::table('gallery');
+            $query->orderBy($columnName, $sortType);
+            if (isset($category)) {
+                $query->where('category', '=' , $category);
+            };
+            $images = $query->paginate(12);
+            if (isset($sort)) {
+                $images->appends('sortByParameter', $sort);
+            };
+            if (isset($category)) {
+                $images->appends('sortByCategory', $category);
+            };
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
 
 
         $categories = DB::table('gallery_categories')

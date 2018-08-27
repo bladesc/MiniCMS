@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class IndexMenuAdministratorController extends Controller
 {
-    
+
     public function Menu(Request $request)
     {
         $sort = $request->input('sort');

@@ -15,7 +15,7 @@ class IndexCmsAdministratorController extends Controller
 
     public function Cms(Request $request)
     {
-        $sort = $request->input('sort');
+        $sort = $request->input('sortByParameter');
 
         switch ($sort) {
             case 'nameAsc':
@@ -41,13 +41,20 @@ class IndexCmsAdministratorController extends Controller
         }
 
         try {
-            $cms = DB::table('cms')
-                ->select('id', 'name', 'html', 'visible')
-                ->orderBy($columnName, $sortType)
-                ->get();
+            $query = DB::table('cms');
+            $query->orderBy($columnName, $sortType);
+            if (isset($category)) {
+                $query->where('category', '=' , $category);
+            };
+            $cms = $query->paginate(12);
+            if (isset($sort)) {
+                $cms->appends('sortByParameter', $sort);
+            };
+
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+
 
         return view('administrator.cms.cms', [
             'cms' => $cms
