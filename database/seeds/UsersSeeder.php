@@ -11,9 +11,8 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0;$i<10;$i++) {
+        for ($i=1;$i<15;$i++) {
             DB::table('users')->insert([
-                'id' => $i,
                 'name' => 'nick' . $i,
                 'email' => 'admin' . $i . '@wp.pl',
                 'password' => bcrypt('admin'),
