@@ -16,8 +16,10 @@
             <td>{{$user->id}}</td>
             <td>{{$user->nick}}</td>
             <td>{{$user->email}}</td>
+            <td>{{$user->name}}</td>
         </tr>
     @endforeach
     </tbody>
 </table>
+<?php echo $users->links(); ?>
 @endsection
