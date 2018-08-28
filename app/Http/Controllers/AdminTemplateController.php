@@ -25,18 +25,22 @@ class AdminTemplateController extends Controller
 
     public function AddLogoProve(Request $request)
     {
-
+        return ($this->addImage($request, 2));
     }
 
     public function AddHeaderProve(Request $request)
     {
+       return ($this->addImage($request, 1));
+    }
 
+    public function addImage($request, $file_type)
+    {
 
-
+        //file_type 1 = header, 2 = logo
         try {
             $urlToFile = DB::table('template')
                 ->select('item_url')
-                ->where('item_type', '=', 1)
+                ->where('item_type', '=', $file_type)
                 ->get();
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -48,13 +52,13 @@ class AdminTemplateController extends Controller
             }
 
             DB::table('template')
-                ->where('item_type', '=', 1)
+                ->where('item_type', '=', $file_type)
                 ->delete();
         }
 
         //upload
-        if ($request->hasFile('header')) {
-            $file = $request->file('header');
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
             $url = 'upload/';
             $url .= Storage::disk('upload')->putFile('template', $file);
             $image_name = $file->getClientOriginalName();
@@ -63,7 +67,7 @@ class AdminTemplateController extends Controller
                     ->insert([
                         'item_url' => $url,
                         'item_name' => $image_name,
-                        'item_type' => 1,
+                        'item_type' => $file_type,
                         'updated_at' => now()
                     ]);
             } catch (\Exception $e) {
