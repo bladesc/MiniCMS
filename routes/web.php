@@ -69,6 +69,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     //administrator->template
     Route::get('/administrator/template', 'AdminTemplateController@index')->name('admin.template');
+    Route::get('/administrator/template/add-logo', 'AdminTemplateController@addLogo')->name('admin.template.add.logo');
+    Route::get('/administrator/template/add-header', 'AdminTemplateController@addHeader')->name('admin.template.add.header');
 });
 
     Route::get('/home', 'HomeController@index')->name('home');

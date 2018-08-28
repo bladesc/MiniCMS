@@ -8,6 +8,16 @@ class AdminTemplateController extends Controller
 {
     public function Index()
     {
+        return view('administrator.template.template');
+    }
 
+    public function AddLogo()
+    {
+        return view('administrator.template.addlogo');
+    }
+
+    public function AddHeader()
+    {
+        return view('administrator.template.addheader');
     }
 }
