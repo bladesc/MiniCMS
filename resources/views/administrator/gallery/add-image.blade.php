@@ -14,7 +14,7 @@
             <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <input type="hidden" name="_method" value="PUT">
-            <button name="zapisz">Zapisz</button>
+            <button name="save">Zapisz</button>
         </form>
     </section>
 @endsection

@@ -70,7 +70,9 @@ Route::group(['middleware' => ['auth']], function() {
     //administrator->template
     Route::get('/administrator/template', 'AdminTemplateController@index')->name('admin.template');
     Route::get('/administrator/template/add-logo', 'AdminTemplateController@addLogo')->name('admin.template.add.logo');
+    Route::put('/administrator/template/add-logo', 'AdminTemplateController@addLogoProve')->name('admin.template.add.logo.prove');
     Route::get('/administrator/template/add-header', 'AdminTemplateController@addHeader')->name('admin.template.add.header');
+    Route::put('/administrator/template/add-header', 'AdminTemplateController@addHeaderProve')->name('admin.template.add.header.prove');
 });
 
     Route::get('/home', 'HomeController@index')->name('home');

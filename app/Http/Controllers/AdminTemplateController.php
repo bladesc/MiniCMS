@@ -20,4 +20,14 @@ class AdminTemplateController extends Controller
     {
         return view('administrator.template.addheader');
     }
+
+    public function AddLogoProve()
+    {
+
+    }
+
+    public function AddHeaderProve()
+    {
+
+    }
 }
