@@ -15,8 +15,9 @@ class TableTemplate extends Migration
     {
         Schema::create('template', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('url_logo', 255)->nullable();
-            $table->char('url_header', 255)->nullable();
+            $table->char('item_url', 255)->nullable();
+            $table->char('item_name', 255)->nullable();
+            $table->integer('item_type')->nullable();
             $table->timestamps();
         });
     }

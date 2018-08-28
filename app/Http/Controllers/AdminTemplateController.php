@@ -31,6 +31,28 @@ class AdminTemplateController extends Controller
     public function AddHeaderProve(Request $request)
     {
 
+
+
+        try {
+            $urlToFile = DB::table('template')
+                ->select('item_url')
+                ->where('item_type', '=', 1)
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        if ($urlToFile) {
+            foreach ($urlToFile as $image) {
+                Storage::disk('public_folder')->delete($image->item_url);
+            }
+
+            DB::table('template')
+                ->where('item_type', '=', 1)
+                ->delete();
+        }
+
+        //upload
         if ($request->hasFile('header')) {
             $file = $request->file('header');
             $url = 'upload/';
@@ -39,14 +61,16 @@ class AdminTemplateController extends Controller
             try {
                 DB::table('template')
                     ->insert([
-                        'url_logo' => $url,
-                        'name_logo' => $image_name
+                        'item_url' => $url,
+                        'item_name' => $image_name,
+                        'item_type' => 1,
+                        'updated_at' => now()
                     ]);
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
 
         }
-        redirect(route('admin.template'))->with('message', (__('messages.succeedAddedImages')));;
+        return redirect(route('admin.template'))->with('message', (__('messages.succeedAddedImages')));;
     }
 }
