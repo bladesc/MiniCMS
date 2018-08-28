@@ -22,15 +22,16 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/administrator/menu', 'IndexMenuAdministratorController@menu')->name('admin.menu');
     Route::get('/administrator/menu/add', 'IndexMenuAdministratorController@add')
         ->name('admin.menu.add');
-    Route::post('/administrator/menu/add', 'IndexMenuAdministratorController@addprove')
+    Route::post('/administrator/menu/add', 'IndexMenuAdministratorController@addProve')
         ->name('admin.menu.add.prove');
     Route::post('/administrator/menu/delete/{id}', 'IndexMenuAdministratorController@delete')
         ->name('admin.menu.delete');
     Route::post('/administrator/menu/modify/{id}', 'IndexMenuAdministratorController@modify')
         ->name('admin.menu.modify');
-    Route::put('/administrator/menu/modify/{id}', 'IndexMenuAdministratorController@modifyprove')
+    Route::put('/administrator/menu/modify/{id}', 'IndexMenuAdministratorController@modifyProve')
         ->name('admin.menu.modify.prove');
-    Route::delete('/administrator/menu/delete/{id}', 'IndexMenuAdministratorController@deleteprove');
+    Route::delete('/administrator/menu/delete/{id}', 'IndexMenuAdministratorController@deleteProve')
+        ->name('admin.menu.delete.prove');
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -39,11 +40,11 @@ Route::group(['middleware' => ['auth']], function() {
     //administrator->cms
     Route::get('/administrator/cms', 'IndexCmsAdministratorController@cms')->name('admin.cms');
     Route::get('/administrator/cms/add', 'IndexCmsAdministratorController@add')->name('admin.cms.add');
-    Route::post('/administrator/cms/add', 'IndexCmsAdministratorController@addprove')->name('admin.cms.add.prove');
+    Route::post('/administrator/cms/add', 'IndexCmsAdministratorController@addProve')->name('admin.cms.add.prove');
     Route::post('/administrator/cms/delete/{id}', 'IndexCmsAdministratorController@delete')->name('admin.cms.delete');
     Route::post('/administrator/cms/modify/{id}', 'IndexCmsAdministratorController@modify')->name('admin.cms.modify');
-    Route::put('/administrator/cms/modify/{id}', 'IndexCmsAdministratorController@modifyprove')->name('admin.cms.modify.prove');
-    Route::delete('/administrator/cms/delete/{id}', 'IndexCmsAdministratorController@deleteprove')->name('admin.cms.delete.prove');
+    Route::put('/administrator/cms/modify/{id}', 'IndexCmsAdministratorController@modifyProve')->name('admin.cms.modify.prove');
+    Route::delete('/administrator/cms/delete/{id}', 'IndexCmsAdministratorController@deleteProve')->name('admin.cms.delete.prove');
 
     //administrator->gallery
     Route::get('/administrator/gallery', 'IndexGalleryAdministratorController@gallery')->name('admin.gallery');
