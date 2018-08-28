@@ -1,5 +1,16 @@
 @extends('administrator.index')
 
 @section('content')
-    {{print_r($account)}}
+    <table>
+         @foreach($account as $account)
+           <tr>
+               <td>{{$account->email}}</td>
+           </tr>
+            <tr>
+                <td>{{$account->name}}</td>
+            </tr>
+
+
+        @endforeach
+    </table>
 @endsection
