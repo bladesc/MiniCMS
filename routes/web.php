@@ -63,6 +63,12 @@ Route::group(['middleware' => ['auth']], function() {
 
     //administrator->account
     Route::get('/administrator/account', 'AdminAccountController@index')->name('admin.account');
+
+    //administrator->statistics
+    Route::get('/administrator/statistics', 'AdminStatisticsController@index')->name('admin.statistics');
+
+    //administrator->template
+    Route::get('/administrator/template', 'AdminTemplateController@index')->name('admin.template');
 });
 
     Route::get('/home', 'HomeController@index')->name('home');
