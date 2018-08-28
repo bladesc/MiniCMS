@@ -1,8 +1,8 @@
 @extends('administrator.index')
 
 @section('content')
-    <a href="{{route('admin.gallery.add')}}">Dodaj zdjęcie</a>
-    <a href="{{route('admin.gallery.add.category')}}">Dodaj kategorię</a>
+    <a class="new right" href="{{route('admin.gallery.add')}}">Add images<i class="far fa-plus-square"></i></a>
+    <a class="new right"  href="{{route('admin.gallery.add.category')}}">Add category <i class="far fa-plus-square"></i></a>
     <section>
         <form method="get" action="{{route('admin.gallery')}}">
 
@@ -21,7 +21,7 @@
                 @endforeach
             </select>
 
-            <button>Sortuj</button>
+            <button class="other">Sort <i class="fas fa-sort"></i></button>
         </form>
     </section>
 

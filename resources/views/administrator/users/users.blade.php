@@ -4,13 +4,14 @@
 <table>
     <thead>
         <tr>
-            <td></td>
+            <th>Id</th>
+            <th>Nick</th>
+            <th>E-mail</th>
+            <th>Name</th>
         </tr>
     </thead>
     <tbody>
 
-    <pre>
-    </pre>
     @foreach($users as $user)
         <tr>
             <td>{{$user->id}}</td>

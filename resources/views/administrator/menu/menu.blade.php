@@ -13,7 +13,7 @@
                <option value="dateDesc">Date descending</option>
            </select>
 
-           <button class="other">Sortuj <i class="fas fa-sort"></i></button>
+           <button class="other">Sort <i class="fas fa-sort"></i></button>
        </form>
    </section>
 

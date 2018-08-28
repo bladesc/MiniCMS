@@ -6,7 +6,7 @@
         <input type="file" name="file">
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         <input type="hidden" name="_method" value="PUT">
-        <button name="save">Dodaj</button>
+        <button class="submit" name="save">Dodaj</button>
     </form>
 
 @endsection

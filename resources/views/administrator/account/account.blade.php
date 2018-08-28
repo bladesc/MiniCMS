@@ -2,6 +2,12 @@
 
 @section('content')
     <table>
+        <tbody>
+            <tr>
+                <th>Option</th>
+                <th>Value</th>
+            </tr>
+        </tbody>
          @foreach($account as $account)
             <tr><td><b>E-mail:</b></td><td>{{$account->email}}</td></tr>
             <tr><td><b>Nick:</b></td><td>{{$account->nick}}</td></tr>
