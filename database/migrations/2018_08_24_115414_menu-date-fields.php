@@ -13,9 +13,11 @@ class MenuDateFields extends Migration
      */
     public function up()
     {
-        Schema::table('menu', function (Blueprint $table) {
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('menu')) {
+            Schema::table('menu', function (Blueprint $table) {
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -13,9 +13,11 @@ class AccountInfoUnique extends Migration
      */
     public function up()
     {
-        Schema::table('account_information', function (Blueprint $table) {
-            $table->unique('id_users');
-        });
+        if (!Schema::hasTable('menu')) {
+            Schema::table('account_information', function (Blueprint $table) {
+                $table->unique('id_users');
+            });
+        }
     }
 
     /**

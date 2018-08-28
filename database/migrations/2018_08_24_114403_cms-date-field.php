@@ -13,9 +13,11 @@ class CmsDateField extends Migration
      */
     public function up()
     {
-        Schema::table('cms', function (Blueprint $table) {
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('menu')) {
+            Schema::table('cms', function (Blueprint $table) {
+                $table->timestamps();
+            });
+        }
     }
 
     /**

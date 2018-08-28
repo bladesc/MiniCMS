@@ -13,14 +13,16 @@ class Gallery extends Migration
      */
     public function up()
     {
-        Schema::create('gallery', function (Blueprint $table) {
-            $table->increments('id');
-            $table->char('name', 255);
-            $table->char('url', 255);
-            $table->integer('category');
-            $table->boolean('visible');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('menu')) {
+            Schema::create('gallery', function (Blueprint $table) {
+                $table->increments('id');
+                $table->char('name', 255);
+                $table->char('url', 255);
+                $table->integer('category');
+                $table->boolean('visible');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

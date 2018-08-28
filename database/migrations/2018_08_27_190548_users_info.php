@@ -13,18 +13,20 @@ class UsersInfo extends Migration
      */
     public function up()
     {
-        Schema::create('account_information', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('id_users')->length(10);
-            $table->char('name', 255);
-            $table->char('surname', 255);
-            $table->char('address', 255);
-            $table->char('city', 255);
-            $table->char('zip_code', 255);
-            $table->char('number', 255);
-            $table->char('avatar', 255);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('menu')) {
+            Schema::create('account_information', function (Blueprint $table) {
+                $table->increments('id');
+                $table->unsignedInteger('id_users')->length(10);
+                $table->char('name', 255);
+                $table->char('surname', 255);
+                $table->char('address', 255);
+                $table->char('city', 255);
+                $table->char('zip_code', 255);
+                $table->char('number', 255);
+                $table->char('avatar', 255);
+                $table->timestamps();
+            });
+        }
     }
 
     /**

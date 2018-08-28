@@ -13,9 +13,11 @@ class Cms2 extends Migration
      */
     public function up()
     {
-        Schema::table('cms', function (Blueprint $table) {
-            $table->text('html', 10000)->change();
-        });
+        if (!Schema::hasTable('menu')) {
+            Schema::table('cms', function (Blueprint $table) {
+                $table->text('html', 10000)->change();
+            });
+        }
     }
 
     /**

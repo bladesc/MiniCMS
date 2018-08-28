@@ -13,12 +13,14 @@ class Menu extends Migration
      */
     public function up()
     {
-        Schema::create('menu', function (Blueprint $table) {
-            $table->increments('id');
-            $table->char('name', 100);
-            $table->boolean('visible');
-            $table->char('url', 200);
-        });
+        if (!Schema::hasTable('menu')) {
+            Schema::create('menu', function (Blueprint $table) {
+                $table->increments('id');
+                $table->char('name', 100);
+                $table->boolean('visible');
+                $table->char('url', 200);
+            });
+        }
     }
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class GalleryCategory extends Migration
+class TableTemplate2 extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class GalleryCategory extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('menu')) {
-            Schema::create('gallery_categories', function (Blueprint $table) {
-                $table->increments('id');
-                $table->char('name', 255);
-                $table->boolean('visible');
-                $table->timestamps();
-            });
-        }
+        Schema::table('template', function (Blueprint $table) {
+            $table->char('name_logo', 255)->nullable();
+            $table->char('name_header', 255)->nullable();
+        });
     }
 
     /**
