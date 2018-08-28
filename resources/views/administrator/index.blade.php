@@ -5,14 +5,14 @@
     <div class="head-bar"><h2>Navigation</h2></div>
     <section>
         <ul>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.menu')}}">Menu</a><i class="fas fa-caret-down"></i></li>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.cms')}}">Cms</a><i class="fas fa-caret-down"></i></li>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.gallery')}}">Galeria</a><i class="fas fa-caret-down"></i></li>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.seo')}}">Seo</a><i class="fas fa-caret-down"></i></li>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.template')}}">Template</a><i class="fas fa-caret-down"></i></li>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.statistics')}}">Statistics</a><i class="fas fa-caret-down"></i></li>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.users')}}">Users</a><i class="fas fa-caret-down"></i></li>
-            <li><i class="fab fa-accessible-icon"></i><a href="{{route('admin.account')}}">My account</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="fas fa-bars"></i><a href="{{route('admin.menu')}}">Menu</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="fas fa-project-diagram"></i><a href="{{route('admin.cms')}}">Cms</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="far fa-images"></i><a href="{{route('admin.gallery')}}">Gallery</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="fas fa-globe"></i><a href="{{route('admin.seo')}}">Seo</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="far fa-file-image"></i><a href="{{route('admin.template')}}">Template</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="fas fa-signal"></i><a href="{{route('admin.statistics')}}">Statistics</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="fas fa-users"></i><a href="{{route('admin.users')}}">Users</a><i class="fas fa-caret-down"></i></li>
+            <li><i class="far fa-user"></i><a href="{{route('admin.account')}}">My account</a><i class="fas fa-caret-down"></i></li>
         </ul>
     </section>
 </div>
@@ -29,12 +29,12 @@
             @else
 
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
+                    <i class="far fa-user"></i> {{ Auth::user()->name }}
                 </a>
 
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                    <i class="fas fa-unlock-alt"></i> {{ __('Logout') }}
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

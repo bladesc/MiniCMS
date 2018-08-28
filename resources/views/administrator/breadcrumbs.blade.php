@@ -14,7 +14,7 @@ for ($i = 1; $i <= count(Request::segments()); $i++) {
 
 <div id="breadcrumbs">
 @foreach($breadcrumb as $key)
-        <div class="breadcrumbs-block"><a href="{{url($key['uri'] . $key['segment'])}}">{{$key['segment']}}</a></div>
+        <div class="breadcrumbs-block"><i class="fas fa-angle-right"></i> <a href="{{url($key['uri'] . $key['segment'])}}">{{$key['segment']}}</a></div>
 @endforeach
 </div>
 

@@ -2,7 +2,7 @@
 
 @section('content')
    <h3>Menu</h3>
-   <a href="{{route('admin.menu.add')}}">Dodaj</a>
+   <a class="new right" href="{{route('admin.menu.add')}}">Add new item <i class="far fa-plus-square"></i></a>
 
    <section>
        <form method="get" action="{{route('admin.menu')}}">
@@ -13,7 +13,7 @@
                <option value="dateDesc">Date descending</option>
            </select>
 
-           <button>Sortuj</button>
+           <button class="other">Sortuj <i class="fas fa-sort"></i></button>
        </form>
    </section>
 
@@ -39,14 +39,14 @@
                     <form method="POST" action="{{route('admin.menu.modify', $item->id)}}">
                         <input type="hidden" name="id" readonly value="{{$item->id}}">
                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                        <button>modify</button>
+                        <button class="modify">modify <i class="fas fa-exchange-alt"></i></button>
                     </form>
                 </td>
                 <td>
                     <form method="POST" action="{{route('admin.menu.delete', $item->id)}}">
                         <input type="hidden" name="id" readonly value="{{$item->id}}">
                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                        <button>delete</button>
+                        <button class="delete">delete <i class="far fa-trash-alt"></i></button>
                     </form>
                 </td>
             </tr>
