@@ -1,11 +1,12 @@
 @extends('administrator.index')
 
 @section('content')
-
+    <h3>Add images</h3>
     <section>
         <form method="post" action="{{route('admin.gallery.add.prove')}}" enctype="multipart/form-data">
 
-            <select name="sortByCategory">
+            <label for="sortByCategory">Category</label>
+            <select name="sortByCategory" id="sortByCategory">
                 @foreach($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach

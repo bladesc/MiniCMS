@@ -9,8 +9,8 @@
             <label for="visible">Enable visible: </label>
             <input type="checkbox" id="visible" name="visible" checked>
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-            <button class="submit">Zapisz</button>
+            <button class="submit">Save</button>
         </form>
+        <div class="foot-box"></div>
     </section>
-    <div class="foot-box"></div>
 @endsection

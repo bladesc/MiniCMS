@@ -48,6 +48,7 @@
     @include('administrator.breadcrumbs')
     <section>
     @yield('content')
+        <div class="foot-box"></div>
     </section>
 </div>
 
