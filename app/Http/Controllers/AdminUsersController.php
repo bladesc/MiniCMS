@@ -9,10 +9,8 @@ class AdminUsersController extends Controller
 {
     public function Index()
     {
-
-
         $users = DB::table('users')
-            ->select('users.id', 'users.name as nick', 'users.email','account_information.name' )
+            ->select('users.id', 'users.name as nick', 'users.email', 'account_information.name')
             ->leftJoin('account_information', 'users.id', '=', 'account_information.id_users')
             ->paginate(12);
 

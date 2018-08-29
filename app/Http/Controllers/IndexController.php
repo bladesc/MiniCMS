@@ -31,4 +31,23 @@ class IndexController extends Controller
             'cms' => $cmsId
         ]);
     }
+
+    public function Pages($name)
+    {
+        try {
+            $cms = DB::table('menu')
+                ->where('name', '=', $name)
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        if ($cms->isEmpty()) {
+            abort(404);
+        }
+
+        return view('home.pages', [
+           'cms' => $cms
+        ]);
+    }
 }

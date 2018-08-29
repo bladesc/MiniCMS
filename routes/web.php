@@ -17,6 +17,14 @@ Auth::routes();
 
 Route::group(['middleware' => ['web']], function() {
     Route::get('/', 'IndexController@index')->name('index');
+    Route::get('/pages/{name}', 'IndexController@pages')
+        ->where(['name' => '[a-z]+'])
+        ->name('index.pages');
+
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/administrator', 'IndexAdministratorController@index')->name('admin.index');
 
     //administrator->menu
     Route::get('/administrator/menu', 'IndexMenuAdministratorController@menu')->name('admin.menu');
@@ -32,10 +40,6 @@ Route::group(['middleware' => ['web']], function() {
         ->name('admin.menu.modify.prove');
     Route::delete('/administrator/menu/delete/{id}', 'IndexMenuAdministratorController@deleteProve')
         ->name('admin.menu.delete.prove');
-});
-
-Route::group(['middleware' => ['auth']], function() {
-    Route::get('/administrator', 'IndexAdministratorController@index')->name('admin.index');
 
     //administrator->cms
     Route::get('/administrator/cms', 'IndexCmsAdministratorController@cms')->name('admin.cms');
