@@ -43,7 +43,7 @@ class AdminGalleryController extends Controller
             $query = DB::table('gallery');
             $query->orderBy($columnName, $sortType);
             if (isset($category)) {
-                $query->where('category', '=' , $category);
+                $query->where('category', '=', $category);
             };
             $images = $query->paginate(12);
             if (isset($sort)) {
@@ -69,7 +69,7 @@ class AdminGalleryController extends Controller
             'dateDesc' => ['Date ascending']
         ];
 
-        foreach ($parameters as $key=>$value) {
+        foreach ($parameters as $key => $value) {
             if ($key == $sort) {
                 $parameters[$key][] = 'selected';
             } else {
@@ -77,8 +77,8 @@ class AdminGalleryController extends Controller
             }
         }
 
-        $categoriesArray=[];
-        foreach ($categories as $key=>$value) {
+        $categoriesArray = [];
+        foreach ($categories as $key => $value) {
             if ($value->id == $category) {
                 $tempCategory = 'selected';
             } else {
@@ -105,28 +105,37 @@ class AdminGalleryController extends Controller
         ]);
     }
 
-    public function AddImageProve(Request $request) {
+    public function AddImageProve(Request $request)
+    {
 
         $category = $request->input('sortByCategory');
 
         if ($request->hasFile('fileToUpload')) {
-            for ($i=0; $i<count($request->file('fileToUpload')); $i++)
-            {
+
+
+            for ($i = 0; $i < count($request->file('fileToUpload')); $i++) {
+                $mimeType = $request->file('fileToUpload')[$i]->getMimeType();
+                if ($mimeType != 'image/jpeg') {
+                    return redirect(route('admin.gallery'))
+                        ->with('message', (__('failed')));
+                }
+            }
+            for ($i = 0; $i < count($request->file('fileToUpload')); $i++) {
                 $url = 'upload/';
                 $url .= Storage::disk('upload')->putFile('gallery', $request->file('fileToUpload')[$i]);
 
                 $image_name = ($request->file('fileToUpload')[$i]->getClientOriginalName());
 
-                if($url) {
+                if ($url) {
                     try {
                         DB::table('gallery')->insert([
-                                'name' => $image_name,
-                                'url' => $url,
-                                'visible' => true,
-                                'category' => $category,
-                                'created_at' => now(),
-                                'updated_at' => now()
-                            ]);
+                            'name' => $image_name,
+                            'url' => $url,
+                            'visible' => true,
+                            'category' => $category,
+                            'created_at' => now(),
+                            'updated_at' => now()
+                        ]);
                     } catch (\Exception $e) {
                         return $e->getMessage();
                     }
@@ -138,7 +147,8 @@ class AdminGalleryController extends Controller
             ->with('message', (__('messages.succeedAddedImages')));;
     }
 
-    public function addCategory() {
+    public function addCategory()
+    {
         return view('administrator.gallery.add-category');
     }
 
@@ -160,8 +170,7 @@ class AdminGalleryController extends Controller
                 return $e->getMessage();
             }
             $message = __('messages.succeedUpdatedRecord');
-        }
-        else {
+        } else {
             $message = __('failed');
         }
         return redirect(route('admin.gallery'))

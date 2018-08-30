@@ -79,12 +79,18 @@ class AdminTemplateController extends Controller
     {
 
         //file_type 1 = header, 2 = logo
-        $file_type = $request->input('itemType');
+        $fileType = $request->input('itemType');
+        $mimeType = $request->file('file')->getMimeType();
+        if ($mimeType  != 'image/jpeg') {
+            return redirect(route('admin.template'))
+                ->with('message', (__('failed')));
+        }
+
 
         try {
             $urlToFile = DB::table('template')
                 ->select('item_url')
-                ->where('item_type', '=', $file_type)
+                ->where('item_type', '=', $fileType)
                 ->get();
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -96,7 +102,7 @@ class AdminTemplateController extends Controller
             }
 
             DB::table('template')
-                ->where('item_type', '=', $file_type)
+                ->where('item_type', '=', $fileType)
                 ->delete();
         }
 
@@ -111,7 +117,7 @@ class AdminTemplateController extends Controller
                     ->insert([
                         'item_url' => $url,
                         'item_name' => $image_name,
-                        'item_type' => $file_type,
+                        'item_type' => $fileType,
                         'updated_at' => now()
                     ]);
             } catch (\Exception $e) {
