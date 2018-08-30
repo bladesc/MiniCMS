@@ -93,7 +93,7 @@ class AdminCmsController extends Controller
 
 
             return redirect(route('admin.cms'))
-                ->with('message', (__('messages.succeedDeleteRecord')));
+                ->with('message', (__('messages.succeedDeletedRecord')));
 
         }
     }

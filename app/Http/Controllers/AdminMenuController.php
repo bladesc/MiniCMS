@@ -160,7 +160,7 @@ class AdminMenuController extends Controller
             }
 
             return redirect(route('admin.menu'))
-                ->with('message', (__('messages.succeedDeleteRecord')));
+                ->with('message', (__('messages.succeedDeletedRecord')));
 
         }
     }
