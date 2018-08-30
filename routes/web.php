@@ -12,10 +12,9 @@
 */
 
 
-
 Auth::routes();
 
-Route::group(['middleware' => ['web']], function() {
+Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'IndexController@index')->name('index');
     Route::get('/pages/{name}', 'IndexController@pages')
         ->where(['name' => '[a-z]+'])
@@ -23,7 +22,7 @@ Route::group(['middleware' => ['web']], function() {
 
 });
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/administrator', 'AdministratorController@index')->name('admin.index');
 
     //administrator->menu
@@ -75,20 +74,19 @@ Route::group(['middleware' => ['auth']], function() {
     //administrator->template
     Route::get('/administrator/template', 'AdminTemplateController@index')
         ->name('admin.template');
-    Route::get('/administrator/template/add-logo', 'AdminTemplateController@addLogo')
-        ->name('admin.template.add.logo');
-    Route::put('/administrator/template/add-logo', 'AdminTemplateController@addLogoProve')
-        ->name('admin.template.add.logo.prove');
-    Route::get('/administrator/template/add-header', 'AdminTemplateController@addHeader')
-        ->name('admin.template.add.header');
-    Route::put('/administrator/template/add-header', 'AdminTemplateController@addHeaderProve')
-        ->name('admin.template.add.header.prove');
-    Route::delete('/administrator/template/{id}', 'AdminTemplateController@deleteItem')
+    Route::get('/administrator/template/additem/{itemType}', 'AdminTemplateController@addItem')
+        ->name('admin.template.add.item');
+    Route::put('/administrator/template/additem', 'AdminTemplateController@addItemProve')
+        ->name('admin.template.add.item.prove');
+    Route::post('/administrator/template/{itemType}/{id}', 'AdminTemplateController@deleteItem')
         ->name('admin.template.delete.item');
-    Route::put('/administrator/template/{id}', 'AdminTemplateController@updateItem')
+    Route::delete('/administrator/template/{itemType}/{id}', 'AdminTemplateController@deleteItemProve')
+        ->name('admin.template.delete.item.prove');
+    Route::put('/administrator/template/{itemType}/{id}', 'AdminTemplateController@updateItem')
         ->name('admin.template.update.item');
+
 });
 
-    Route::get('/home', 'HomeController@index')->name('home');
-    // Only authenticated users may enter...
+Route::get('/home', 'HomeController@index')->name('home');
+// Only authenticated users may enter...
 

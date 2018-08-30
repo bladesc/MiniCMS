@@ -22,30 +22,65 @@ class AdminTemplateController extends Controller
         ]);
     }
 
-    public function AddLogo()
+    public function AddItem($itemType)
     {
-        return view('administrator.template.addlogo');
+        return view('administrator.template.additem', [
+            'itemType' => $itemType
+        ]);
     }
 
-    public function AddHeader()
+    public function UpdateItem($itemType)
     {
-        return view('administrator.template.addheader');
+        return view('administrator.template.additem', [
+            'itemType' => $itemType
+        ]);
     }
 
-    public function AddLogoProve(Request $request)
+    public function DeleteItem($itemType, $itemId)
     {
-        return ($this->addImage($request, 2));
+        return view('administrator.template.deleteitem', [
+            'itemId' => $itemId,
+            'itemType' => $itemType
+        ]);
     }
 
-    public function AddHeaderProve(Request $request)
+    public function DeleteItemProve($itemType, $itemId)
     {
-       return ($this->addImage($request, 1));
+        try {
+            $urlToFile = DB::table('template')
+                ->select('item_url')
+                ->where('id', '=', $itemId)
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        if ($urlToFile) {
+            foreach ($urlToFile as $image) {
+                Storage::disk('public_folder')->delete($image->item_url);
+            }
+
+            DB::table('template')
+                ->where('id', '=', $itemId)
+                ->delete();
+        }
+
+        return redirect(route('admin.template'))
+            ->with('message', (__('messages.succeedDeletedRecord')));
     }
 
-    public function addImage($request, $file_type)
+    public function AddItemProve(Request $request)
+    {
+        return ($this->addImage($request));
+    }
+
+
+    public function addImage($request)
     {
 
         //file_type 1 = header, 2 = logo
+        $file_type = $request->input('itemType');
+
         try {
             $urlToFile = DB::table('template')
                 ->select('item_url')
@@ -84,6 +119,7 @@ class AdminTemplateController extends Controller
             }
 
         }
-        return redirect(route('admin.template'))->with('message', (__('messages.succeedAddedImages')));;
+        return redirect(route('admin.template'))
+            ->with('message', (__('messages.succeedAddedImages')));
     }
 }

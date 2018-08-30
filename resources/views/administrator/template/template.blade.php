@@ -1,8 +1,8 @@
 @extends('administrator.index')
 
 @section('content')
-    <a class="new right" href="{{route('admin.template.add.logo')}}">Add logo <i class="far fa-plus-square"></i></a>
-    <a class="new right" href="{{route('admin.template.add.header')}}">Add header <i class="far fa-plus-square"></i></a>
+    <a class="new right" href="{{route('admin.template.add.item', 1)}}">Add logo <i class="far fa-plus-square"></i></a>
+    <a class="new right" href="{{route('admin.template.add.item', 2)}}">Add header <i class="far fa-plus-square"></i></a>
 
     <section>
         @foreach($templateImages as $templateImage)
@@ -13,17 +13,15 @@
                     <img src="{{asset($templateImage->item_url)}}">
                 </div>
                 <div class="form-container">
-                    <form action="{{route('admin.template.update.item' , $templateImage->id)}}" method="post">
+                    <form action="{{route('admin.template.update.item', ['itemType' => $templateImage->item_type, 'itemId' => $templateImage->id])}}" method="post">
                         <input type="hidden" required name="id" value="{{$templateImage->id}}">
                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                        <input type="hidden" name="_method" value="put">
                         <button class="other">Change</button>
                     </form>
 
-                    <form action="{{route('admin.template.delete.item', $templateImage->id)}}" method="post">
+                    <form action="{{route('admin.template.delete.item',['itemType' => $templateImage->item_type, 'itemId' => $templateImage->id])}}" method="post">
                         <input type="hidden" required name="id" value="{{$templateImage->id}}">
                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                        <input type="hidden" name="_method" value="delete">
                         <button class="other">Delete</button>
                     </form>
                 </div>
