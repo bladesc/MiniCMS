@@ -5,15 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class IndexCmsAdministratorController extends Controller
+class AdminMenuController extends Controller
 {
 
-    public function Index()
-    {
-        return view('administrator.index');
-    }
-
-    public function Cms(Request $request)
+    public function Menu(Request $request)
     {
         $sort = $request->input('sortByParameter');
 
@@ -41,78 +36,41 @@ class IndexCmsAdministratorController extends Controller
         }
 
         try {
-            $query = DB::table('cms');
+            $query = DB::table('menu');
+            $query->select('id', 'name', 'url', 'visible');
             $query->orderBy($columnName, $sortType);
             if (isset($category)) {
                 $query->where('category', '=' , $category);
             };
-            $cms = $query->paginate(12);
+            $menu = $query->paginate(12);
             if (isset($sort)) {
-                $cms->appends('sortByParameter', $sort);
+                $menu->appends('sortByParameter', $sort);
             };
 
         } catch (\Exception $e) {
             return $e->getMessage();
         }
 
-
-        return view('administrator.cms.cms', [
-            'cms' => $cms
+        return view('administrator.menu.menu', [
+            'menu' => $menu
         ]);
-    }
-
-    public function Delete(Request $request)
-    {
-        $id = $request->input('id');
-        try {
-            $cms = DB::table('cms')
-                ->select('id')
-                ->where('id','=', $id)
-                ->get();
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-        return view('administrator.cms.delete', [
-            'cms' => $cms
-        ]);
-
-    }
-
-    public function DeleteProve(Request $request)
-    {
-        $id = $request->input('id');
-
-        if ($id) {
-            try {
-                DB::table('cms')
-                    ->where('id', '=', $id)->delete();
-            } catch (\Exception $e)
-            {
-                return $e->getMessage();
-            }
-
-
-            return redirect(route('admin.cms'))
-                ->with('message', (__('messages.succeedDeleteRecord')));
-
-        }
     }
 
     public function Add() {
-        return view('administrator.cms.add');
+        return view('administrator.menu.add');
     }
 
     public function AddProve(Request $request) {
         $visible = ($request->input('visible') !== null) ? 1 : 0;
-        $html = $request->input('html');
+        $url = $request->input('url');
         $name = $request->input('name');
 
-        if ($visible && $html && $name) {
+        if ($visible && $url && $name) {
             try {
-                DB::table('cms')
+                DB::table('menu')
                     ->insert([
                         'visible' => $visible,
-                        'html' => $html,
+                        'url' => $url,
                         'name' => $name,
                         'created_at' => now(),
                         'updated_at' => now()
@@ -125,7 +83,7 @@ class IndexCmsAdministratorController extends Controller
         else {
             $message = __('failed');
         }
-        return redirect(route('admin.cms'))
+        return redirect(route('admin.menu'))
             ->with('message', $message);
     }
 
@@ -133,15 +91,16 @@ class IndexCmsAdministratorController extends Controller
     {
         $id = $request->input('id');
         try {
-            $cms = DB::table('cms')
-                ->select('id', 'name', 'html', 'visible')
+            $menu = DB::table('menu')
+                ->select('id', 'name', 'url', 'visible')
                 ->where('id','=', $id)
                 ->get();
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-        return view('administrator.cms.modify', [
-            'cms' => $cms
+
+        return view('administrator.menu.modify', [
+            'menu' => $menu
         ]);
     }
 
@@ -149,16 +108,16 @@ class IndexCmsAdministratorController extends Controller
     {
         $id = $request->input('id');
         $visible = ($request->input('visible') !== null) ? 1 : 0;
-        $html = $request->input('html');
+        $url = $request->input('url');
         $name = $request->input('name');
 
-        if ($id && $visible && $html && $name) {
+        if ($id && $visible && $url && $name) {
             try {
-                DB::table('cms')
+                DB::table('menu')
                     ->where('id', $id)
                     ->update([
                         'visible' => $visible,
-                        'html' => $html,
+                        'url' => $url,
                         'name' => $name,
                         'updated_at' => now()
                     ]);
@@ -166,7 +125,43 @@ class IndexCmsAdministratorController extends Controller
                 return $e->getMessage();
             }
         }
-        return redirect(route('admin.cms'))
+        return redirect(route('admin.menu'))
             ->with('message', (__('messages.succeedUpdatedRecord')));
+    }
+
+    public function Delete(Request $request)
+    {
+        $id = $request->input('id');
+        try {
+            $menu = DB::table('menu')
+                ->select('id')
+                ->where('id','=', $id)
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return view('administrator.menu.delete', [
+            'menu' => $menu
+        ]);
+
+    }
+
+    public function DeleteProve(Request $request)
+    {
+        $id = $request->input('id');
+
+        if ($id) {
+            try {
+                DB::table('menu')
+                    ->where('id', '=', $id)->delete();
+            } catch (\Exception $e)
+            {
+                return $e->getMessage();
+            }
+
+            return redirect(route('admin.menu'))
+                ->with('message', (__('messages.succeedDeleteRecord')));
+
+        }
     }
 }

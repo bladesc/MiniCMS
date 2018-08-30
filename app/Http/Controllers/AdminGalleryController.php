@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class IndexGalleryAdministratorController extends Controller
+class AdminGalleryController extends Controller
 {
 
     public function Gallery(Request $request)

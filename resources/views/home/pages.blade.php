@@ -2,6 +2,6 @@
 
 @section('content')
 
- {{print_r($cms)}}
+ {{$cms[0]->name}}
 
 @endsection
