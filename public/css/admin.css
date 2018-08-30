@@ -273,6 +273,21 @@ button.other {
     margin: 15px 15px 15px 0;
 }
 
+.img-container {
+    padding: 10px 0;
+    width: 12%; margin: 0 0.5%;
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
+    margin: 10px 0;
+    height: 120px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.img-container img {
+    width: 80%;
+}
+
 section p {
     margin: 0;
     padding: 0;

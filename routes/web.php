@@ -73,11 +73,20 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/administrator/statistics', 'AdminStatisticsController@index')->name('admin.statistics');
 
     //administrator->template
-    Route::get('/administrator/template', 'AdminTemplateController@index')->name('admin.template');
-    Route::get('/administrator/template/add-logo', 'AdminTemplateController@addLogo')->name('admin.template.add.logo');
-    Route::put('/administrator/template/add-logo', 'AdminTemplateController@addLogoProve')->name('admin.template.add.logo.prove');
-    Route::get('/administrator/template/add-header', 'AdminTemplateController@addHeader')->name('admin.template.add.header');
-    Route::put('/administrator/template/add-header', 'AdminTemplateController@addHeaderProve')->name('admin.template.add.header.prove');
+    Route::get('/administrator/template', 'AdminTemplateController@index')
+        ->name('admin.template');
+    Route::get('/administrator/template/add-logo', 'AdminTemplateController@addLogo')
+        ->name('admin.template.add.logo');
+    Route::put('/administrator/template/add-logo', 'AdminTemplateController@addLogoProve')
+        ->name('admin.template.add.logo.prove');
+    Route::get('/administrator/template/add-header', 'AdminTemplateController@addHeader')
+        ->name('admin.template.add.header');
+    Route::put('/administrator/template/add-header', 'AdminTemplateController@addHeaderProve')
+        ->name('admin.template.add.header.prove');
+    Route::delete('/administrator/template/{id}', 'AdminTemplateController@deleteItem')
+        ->name('admin.template.delete.item');
+    Route::put('/administrator/template/{id}', 'AdminTemplateController@updateItem')
+        ->name('admin.template.update.item');
 });
 
     Route::get('/home', 'HomeController@index')->name('home');

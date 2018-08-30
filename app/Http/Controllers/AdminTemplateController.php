@@ -10,7 +10,16 @@ class AdminTemplateController extends Controller
 {
     public function Index()
     {
-        return view('administrator.template.template');
+        try {
+            $templateImages = DB::table('template')
+                ->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return view('administrator.template.template', [
+            'templateImages' => $templateImages
+        ]);
     }
 
     public function AddLogo()
