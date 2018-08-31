@@ -115,11 +115,13 @@ class AdminGalleryController extends Controller
 
             for ($i = 0; $i < count($request->file('fileToUpload')); $i++) {
                 $mimeType = $request->file('fileToUpload')[$i]->getMimeType();
+
                 if ($mimeType != 'image/jpeg') {
                     return redirect(route('admin.gallery'))
                         ->with('message', (__('failed')));
                 }
             }
+
             for ($i = 0; $i < count($request->file('fileToUpload')); $i++) {
                 $url = 'upload/';
                 $url .= Storage::disk('upload')->putFile('gallery', $request->file('fileToUpload')[$i]);

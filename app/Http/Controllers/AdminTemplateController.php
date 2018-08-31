@@ -81,7 +81,8 @@ class AdminTemplateController extends Controller
         //file_type 1 = header, 2 = logo
         $fileType = $request->input('itemType');
         $mimeType = $request->file('file')->getMimeType();
-        if ($mimeType  != 'image/jpeg') {
+
+        if (($mimeType  != 'image/jpeg') && ($mimeType  != 'image/png')) {
             return redirect(route('admin.template'))
                 ->with('message', (__('failed')));
         }

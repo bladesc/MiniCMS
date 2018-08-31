@@ -7,7 +7,13 @@ body {
     text-align: center;
 }
 
+#nav-logo p img {
+ width: 160px;
+}
 
+header img {
+    width: 100%;
+}
 #nav-logo p {
 
     margin: 10px;
