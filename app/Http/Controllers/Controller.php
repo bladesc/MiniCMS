@@ -22,8 +22,10 @@ class Controller extends BaseController
             switch ($templateImage->item_type) {
                 case 1:
                     $templateImagesArray['logo'] = $templateImage;
+                    break;
                 case 2:
                     $templateImagesArray['header'] = $templateImage;
+                    break;
                 default:
                     break;
             }

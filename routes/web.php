@@ -78,11 +78,11 @@ Route::group(['middleware' => ['auth']], function () {
         ->name('admin.template.add.item');
     Route::put('/administrator/template/additem', 'AdminTemplateController@addItemProve')
         ->name('admin.template.add.item.prove');
-    Route::post('/administrator/template/{itemType}/{id}', 'AdminTemplateController@deleteItem')
+    Route::post('/administrator/template/delete/{itemType}/{id}', 'AdminTemplateController@deleteItem')
         ->name('admin.template.delete.item');
-    Route::delete('/administrator/template/{itemType}/{id}', 'AdminTemplateController@deleteItemProve')
+    Route::delete('/administrator/template/delete/{itemType}/{id}', 'AdminTemplateController@deleteItemProve')
         ->name('admin.template.delete.item.prove');
-    Route::put('/administrator/template/{itemType}/{id}', 'AdminTemplateController@updateItem')
+    Route::post('/administrator/template/update/{itemType}/{id}', 'AdminTemplateController@updateItem')
         ->name('admin.template.update.item');
 
 });
