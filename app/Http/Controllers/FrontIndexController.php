@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+
+class FrontIndexController extends Controller
 {
+
     public function Index()
     {
         $menu = DB::table('menu')
@@ -19,7 +22,7 @@ class IndexController extends Controller
             ->get();
 
         $cmsId = [];
-        foreach ($cms as $key=>$value) {
+        foreach ($cms as $key => $value) {
             $cmsId[$value->id]['id'] = $value->id;
             $cmsId[$value->id]['name'] = $value->name;
             $cmsId[$value->id]['html'] = $value->html;
@@ -47,7 +50,7 @@ class IndexController extends Controller
         }
 
         return view('home.pages', [
-           'cms' => $cms
+            'cms' => $cms
         ]);
     }
 }

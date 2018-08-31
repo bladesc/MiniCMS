@@ -15,8 +15,8 @@
 Auth::routes();
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/', 'IndexController@index')->name('index');
-    Route::get('/pages/{name}', 'IndexController@pages')
+    Route::get('/', 'FrontIndexController@index')->name('index');
+    Route::get('/pages/{name}', 'FrontIndexController@pages')
         ->where(['name' => '[a-z]+'])
         ->name('index.pages');
 

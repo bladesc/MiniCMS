@@ -1,10 +1,6 @@
 <nav>
     <div id="nav-logo">
-
-
-    <p>logo</p>
-
-
+    <p><img src="{{asset($templateImages['logo']->item_url)}}" title="$templateImages['logo']->item_name"></p>
     </div>
     <div id="nav-menu">
         <ul>
